@@ -2,6 +2,9 @@
   "name": "readable",
   "version": "1.0.0",
   "description": "PHP code linter",
+  "bin": {
+    "readable": "./bin/readable.js"
+  },
   "main": "index.js",
   "scripts": {
     "test": "test"
