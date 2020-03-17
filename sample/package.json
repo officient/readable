@@ -1,0 +1,8 @@
+{
+  "name": "readable-sample",
+  "version": "1.0.0",
+  "description": "Sample PHP project with readable",
+  "scripts": {
+    "lint": "readable"
+  }
+}
