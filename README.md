@@ -27,6 +27,16 @@ After running `readable --init`, you'll have a `.readable.json` file in your dir
         "rules": {}
     }
 
+### Development
+
+To lint code run:
+
+	npm run lint
+
+To fix (lint):
+
+	npm run fix
+
 ## TODO
 
  - [ ] works for PHP initially, but a next version could support more languages, such as JS (next version not in scope)
