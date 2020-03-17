@@ -1,0 +1,19 @@
+{
+  "name": "readable",
+  "version": "1.0.0",
+  "description": "PHP code linter",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/willem-delbare/readable.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/willem-delbare/readable/issues"
+  },
+  "homepage": "https://github.com/willem-delbare/readable#readme"
+}
