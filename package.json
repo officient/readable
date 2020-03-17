@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/willem-delbare/readable/issues"
   },
-  "homepage": "https://github.com/willem-delbare/readable#readme"
+  "homepage": "https://github.com/willem-delbare/readable#readme",
+  "dependencies": {
+    "lodash.merge": "^4.6.2"
+  }
 }

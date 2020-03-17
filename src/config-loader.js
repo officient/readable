@@ -5,19 +5,22 @@
 "use strict";
 
 const fs = require('fs'),
+    merge = require('lodash.merge'),
     path = require('path');
 
-const fileName = '.readable.json';
+const fileName = path.join('.', '.readable.json');
 
 function init() {
-    const source = path.join(__dirname, 'default' + fileName),
-        destination = path.join('.', fileName);
+    const source = path.join(__dirname, 'default' + fileName);
 
-    fs.copyFileSync(source, destination);
+    fs.copyFileSync(source, fileName);
 }
 
 function load() {
-
+    const data = fs.readFileSync(fileName, 'utf8'),
+        defaultConfig = require('./default' + fileName);
+    
+    return merge(defaultConfig, JSON.parse(data));
 }
 
 //------------------------------------------------------------------------------
