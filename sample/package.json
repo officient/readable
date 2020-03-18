@@ -4,5 +4,8 @@
   "description": "Sample PHP project with readable",
   "scripts": {
     "lint": "readable"
+  },
+  "devDependencies": {
+    "readable": "willem-delbare/readable#master"
   }
 }
