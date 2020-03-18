@@ -1,5 +1,11 @@
 # Rules and default configuration
 
+## disable rule
+
+```JSON
+"namespace-max-files": false,
+```
+
 ### namespace-max-files
 
 Avoid namespaces with 15+ files

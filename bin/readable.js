@@ -9,8 +9,8 @@
 
 const init = process.argv.includes('--init');
 
-const configLoader = require('../src/config-loader'),
-    lint = require('../src/lint');
+const configLoader = require('../src/config-loader');
+const lint = require('../src/lint');
 
 process.on('uncaughtException', (err) => {
   // TODO: check why it catches not all exceptions
@@ -28,14 +28,19 @@ function run() {
     console.error(err.message);
     return 2;
   }
-  lint(config);
 
-  return 0;
+  const errors = lint(config);
+  if (errors.length === 0) {
+    return 0;
+  }
+
+  errors.forEach((e) => console.error(`${e.path}: ${e.message}`));
+  return 1;
 }
 
 if (init) {
   configLoader.init();
   console.info(`Created default config in ${configLoader.fileName}`);
 } else {
-  run();
+  process.exitCode = run();
 }

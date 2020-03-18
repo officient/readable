@@ -7,6 +7,7 @@ function checkMaxFiles(maxFiles, files, report) {
       checkMaxFiles(maxFiles, file, report);
       return;
     }
+
     count += 1;
     if (count === (maxFiles + 1)) {
       const path = dirname(file);
