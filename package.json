@@ -7,8 +7,9 @@
   },
   "main": "index.js",
   "scripts": {
-    "lint": "eslint bin/ src/",
-    "fix": "eslint --fix bin/ src/"
+    "lint": "eslint bin/ src/ tests/",
+    "fix": "eslint --fix bin/ src/ tests/",
+    "test": "ava"
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,7 @@
     "lodash.merge": "^4.6.2"
   },
   "devDependencies": {
+    "ava": "^3.5.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.1.0",
     "eslint-plugin-import": "^2.20.1"

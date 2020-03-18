@@ -2,6 +2,7 @@
 /* eslint import/no-dynamic-require:off */
 /* eslint global-require:off */
 
+// load rules from config
 function loadRules(rulesConfig) {
   const namespace = [];
   const file = [];
@@ -26,6 +27,7 @@ function loadRules(rulesConfig) {
   };
 }
 
+// main lint
 function lint(config) {
   const rules = loadRules(config.rules);
 
