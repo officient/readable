@@ -2,5 +2,9 @@
   "pathes": [
     "src/"
   ],
-  "rules": {}
+  "rules": {
+    "namespace-max-files": {
+      "max-files": 15
+    }
+  }
 }

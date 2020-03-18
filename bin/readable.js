@@ -9,7 +9,8 @@
 
 const init = process.argv.includes('--init');
 
-const configLoader = require('../src/config-loader');
+const configLoader = require('../src/config-loader'),
+    lint = require('../src/lint');
 
 process.on('uncaughtException', (err) => {
   // TODO: check why it catches not all exceptions
@@ -27,7 +28,8 @@ function run() {
     console.error(err.message);
     return 2;
   }
-  console.info(`${config}`);
+  lint(config);
+
   return 0;
 }
 

@@ -1,6 +1,10 @@
 {
-    "pathes": [
-        "src/"
-    ],
-    "rules": {}
+  "pathes": [
+    "src/"
+  ],
+  "rules": {
+    "namespace-max-files": {
+      "max-files": 15
+    }
+  }
 }
