@@ -9,11 +9,12 @@ function checkMaxFiles(maxFiles, files, report) {
     }
 
     count += 1;
-    if (count === (maxFiles + 1)) {
-      const path = dirname(file);
-      report(path, `namespace contains more than ${maxFiles} files.`);
-    }
   });
+
+  if (count > maxFiles) {
+    const path = dirname(files[0]);
+    report(path, `namespace contains more than ${maxFiles} files [${count}].`);
+  }
 }
 
 module.exports = {

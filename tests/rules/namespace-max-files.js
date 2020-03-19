@@ -16,7 +16,7 @@ test.cb('namespace-max-files reports', (t) => {
   t.plan(2);
   checkFiles({ 'max-files': 2 }, files, (path, message) => {
     t.is(path, './src');
-    t.true(message.includes('than 2 files.'));
+    t.true(message.includes('than 2 files [3].'));
     t.end();
   });
 });
