@@ -30,11 +30,22 @@ function run() {
   }
 
   const errors = lint(config);
-  if (errors.length === 0) {
+  const pathes = Object.keys(errors);
+  if (pathes.length === 0) {
     return 0;
   }
 
-  errors.forEach((e) => console.error(`${e.path}: ${e.message}`));
+  pathes.forEach((path) => {
+    console.error(path);
+    Object.keys(errors[path]).forEach((message) => {
+      console.error(`  ${message}`);
+      const tokens = errors[path][message];
+      tokens.forEach((token) => {
+        console.error(`    at line ${token.line} column ${token.column}`);
+      });
+    });
+  });
+
   return 1;
 }
 
