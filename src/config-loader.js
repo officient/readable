@@ -2,7 +2,7 @@
 /* eslint global-require:off */
 
 const fs = require('fs');
-const merge = require('lodash.merge');
+const { merge } = require('lodash');
 const path = require('path');
 
 const fileName = path.join('.', '.readable.json');
