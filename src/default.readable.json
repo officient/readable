@@ -5,6 +5,9 @@
   "rules": {
     "namespace-max-files": {
       "max-files": 15
+    },
+    "file-max-size": {
+      "max-lines": 200
     }
   }
 }

@@ -16,6 +16,16 @@ Avoid namespaces with 15+ files
 }
 ```
 
+### file-max-size
+
+Avoid files with more than 200 lines
+
+```JSON
+"file-max-size": {
+  "max-lines": 200
+}
+```
+
 ## TODO
 
 Below is an exhaustive set of the initial rules we need implemented. Each rule should have it's own 'class/module' and act as a plugin for the wider system:
@@ -26,9 +36,9 @@ Below is an exhaustive set of the initial rules we need implemented. Each rule s
 - [ ] avoid indent deeper than 4 (maximum block nesting, eg for loop within an if within a for loop within a for loop)
 - [ ] avoid complicated ifs (eg more than 2 &&.., combination of && and ||)
 - [ ] avoid ternary operator combined with line length exceeding 50 chars
-- [+] avoid namespaces with 15+ files
+- [x] avoid namespaces with 15+ files
 - [ ] avoid loops with inside of them more than 15 lines (a block that should be a function)
-- [ ] avoid files with more than 200 lines.
+- [x] avoid files with more than 200 lines.
 - [ ] avoid dangerous calls to eval, print_r, var_export, var_dump, phpinfo, exec,..(forbidden function list)
 - [ ] avoid assignment inside of an if statement
 - [ ] avoid an if statement or for loop without braces
