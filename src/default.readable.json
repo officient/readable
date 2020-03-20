@@ -14,6 +14,10 @@
       "functions": [
         "eval", "print_r", "var_export", "var_dump", "phpinfo", "exec"
       ]
+    },
+    "variable-length": {
+      "min-length": 3,
+      "whitelist": ["$id", "$i"]
     }
   }
 }

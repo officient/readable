@@ -46,6 +46,17 @@ Avoid dangerous calls to eval, print_r, var_export, var_dump, phpinfo, exec,..(f
 }
 ```
 
+### variable-length
+
+Avoid variables with names shorter than 3 letters (while whitelisting $i or $id)
+
+```JSON
+"variable-length": {
+      "min-length": 3,
+      "whitelist": ["$id", "$i"]
+    }
+```
+
 ## TODO
 
 Below is an exhaustive set of the initial rules we need implemented. Each rule should have it's own 'class/module' and act as a plugin for the wider system:
@@ -62,7 +73,7 @@ Below is an exhaustive set of the initial rules we need implemented. Each rule s
 - [x] avoid dangerous calls to eval, print_r, var_export, var_dump, phpinfo, exec,..(forbidden function list)
 - [ ] avoid assignment inside of an if statement
 - [ ] avoid an if statement or for loop without braces
-- [ ] avoid variables with names shorter than 3 letters (while whitelisting $i or $id)
+- [x] avoid variables with names shorter than 3 letters (while whitelisting $i or $id)
 - [ ] avoid function names starting with a certain pattern (configurable list of prefixes)
 - [ ] avoid overriding of a function's arguments
 - [ ] avoid empty catch blocks
