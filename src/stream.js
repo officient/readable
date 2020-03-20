@@ -46,7 +46,7 @@ class Stream {
       return this.eatString(pattern);
     }
 
-    const reg = new RegExp(`${pattern.source}`, 'gm');
+    const reg = new RegExp(`${pattern.source}`, 'g');
     reg.lastIndex = this.pos;
     const match = reg.exec(this.string);
     if ((match === null) || (match.index !== this.pos)) {
@@ -55,6 +55,21 @@ class Stream {
 
     this.pos += match[0].length;
     return true;
+  }
+
+  eatUntil(pattern, include) {
+    const reg = new RegExp(`${pattern.source}`, 'gm');
+    reg.lastIndex = this.pos;
+    const match = reg.exec(this.string);
+    if ((match === null)) {
+      // not found utill end of file
+      this.pos = this.string.length;
+    } else {
+      this.pos = match.index;
+      if (include) {
+        this.pos += match[0].length;
+      }
+    }
   }
 }
 
