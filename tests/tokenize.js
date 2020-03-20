@@ -35,3 +35,8 @@ test('tokenize detects function calls', (t) => {
   const tokens = tokenize('var_dump($var);');
   t.true(hasToken(tokens, 'var_dump'));
 });
+
+test('tokenize detects variables', (t) => {
+  const tokens = tokenize('var_dump($var);');
+  t.true(hasToken(tokens, '$var'));
+});

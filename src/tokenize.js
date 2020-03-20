@@ -4,6 +4,7 @@ const types = {
   whitespace: 'whitespace',
   comment: 'comment',
   label: 'label',
+  variable: 'variable',
   other: 'other',
   bracket: 'bracket',
   eof: 'eof',
@@ -83,6 +84,10 @@ function readToken(stream) {
   const label = '[a-zA-Z_\\u0080-\\u00ff][a-zA-Z0-9_\\u0080-\\u00ff]*';
   if (stream.eatReg(label)) {
     return types.label;
+  }
+
+  if (stream.eatReg(`\\$${label}`)) {
+    return types.variable;
   }
 
   if (stream.eatReg(/\S+/)) {
