@@ -5,9 +5,9 @@ const ava = require('ava');
 const { tokenize } = require('./tokenize');
 
 function ruleTest(name, rule, tests) {
-  tests.valid.forEach((test) => {
+  tests.valid.forEach((test, i) => {
     const tokens = tokenize(test.src);
-    ava.cb(`${name} passes`, (t) => {
+    ava.cb(`${name} passes [${i + 1}]`, (t) => {
       rule.check(test.config, tokens, () => {
         t.fail();
         t.end();
@@ -16,9 +16,9 @@ function ruleTest(name, rule, tests) {
       t.end();
     });
   });
-  tests.invalid.forEach((test) => {
+  tests.invalid.forEach((test, i) => {
     const tokens = tokenize(test.src);
-    ava.cb(`${name} reports`, (t) => {
+    ava.cb(`${name} reports [${i + 1}]`, (t) => {
       rule.check(test.config, tokens, (message) => {
         t.true(message.includes(test.messageIncludes));
         t.end();
