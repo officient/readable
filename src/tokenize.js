@@ -1,4 +1,4 @@
-const { Stream } = require('./utils');
+const Stream = require('./stream');
 
 const types = {
   whitespace: 'whitespace',
