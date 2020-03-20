@@ -34,6 +34,18 @@ Avoid a class without a single comment at the top stating purpose
 "class-comment": true
 ```
 
+### forbidden-functions
+
+Avoid dangerous calls to eval, print_r, var_export, var_dump, phpinfo, exec,..(forbidden function list)
+
+```JSON
+"forbidden-functions": {
+  "functions": [
+    "eval", "print_r", "var_export", "var_dump", "phpinfo", "exec"
+  ]
+}
+```
+
 ## TODO
 
 Below is an exhaustive set of the initial rules we need implemented. Each rule should have it's own 'class/module' and act as a plugin for the wider system:
@@ -47,7 +59,7 @@ Below is an exhaustive set of the initial rules we need implemented. Each rule s
 - [x] avoid namespaces with 15+ files
 - [ ] avoid loops with inside of them more than 15 lines (a block that should be a function)
 - [x] avoid files with more than 200 lines.
-- [ ] avoid dangerous calls to eval, print_r, var_export, var_dump, phpinfo, exec,..(forbidden function list)
+- [x] avoid dangerous calls to eval, print_r, var_export, var_dump, phpinfo, exec,..(forbidden function list)
 - [ ] avoid assignment inside of an if statement
 - [ ] avoid an if statement or for loop without braces
 - [ ] avoid variables with names shorter than 3 letters (while whitelisting $i or $id)

@@ -37,7 +37,7 @@ class Tokens {
 
   forEach(callback) {
     const { pos } = this;
-    for (let i = 0; i < 9; i += 1) {
+    for (let i = 0; i < this.array.length; i += 1) {
       this.pos = i;
       callback(this);
     }
@@ -80,7 +80,7 @@ function readToken(stream) {
   }
 
   // from official PHP docs
-  const label = '[a-zA-Z_\\u80-\\uff][a-zA-Z0-9_\\u80-\\uff]*';
+  const label = '[a-zA-Z_\\u0080-\\u00ff][a-zA-Z0-9_\\u0080-\\u00ff]*';
   if (stream.eatReg(label)) {
     return types.label;
   }

@@ -9,6 +9,11 @@
     "file-max-size": {
       "max-lines": 200
     },
-    "class-comment": true
+    "class-comment": true,
+    "forbidden-functions": {
+      "functions": [
+        "eval", "print_r", "var_export", "var_dump", "phpinfo", "exec"
+      ]
+    }
   }
 }
