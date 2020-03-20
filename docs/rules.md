@@ -26,12 +26,20 @@ Avoid files with more than 200 lines
 }
 ```
 
+### class-comment
+
+Avoid a class without a single comment at the top stating purpose
+
+```JSON
+"class-comment": true
+```
+
 ## TODO
 
 Below is an exhaustive set of the initial rules we need implemented. Each rule should have it's own 'class/module' and act as a plugin for the wider system:
 
 - [ ] avoid triple inner for/foreach (eg for within for within for loop)
-- [ ] avoid a class without a single comment at the top stating purpose
+- [x] avoid a class without a single comment at the top stating purpose
 - [ ] avoid any function longer than 50 lines
 - [ ] avoid indent deeper than 4 (maximum block nesting, eg for loop within an if within a for loop within a for loop)
 - [ ] avoid complicated ifs (eg more than 2 &&.., combination of && and ||)
