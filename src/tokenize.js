@@ -10,18 +10,20 @@ const types = {
 // wraper around array of tokens
 // to hep search and navigate
 class Tokens {
-  constructor(tokens) {
+  constructor(tokens, pos) {
     this.array = tokens;
-    this.pos = 0;
+    this.pos = pos || 0;
   }
 
-  prev() { this.pos -= 1; }
+  movePrev() { this.pos -= 1; }
 
-  next() { this.pos += 1; }
+  moveVext() { this.pos += 1; }
 
   body() { return this.current().body; }
 
   type() { return this.current().type; }
+
+  copy() { return new Tokens(this.array, this.pos); }
 
   current() {
     if ((this.pos < 0) || (this.pos >= this.array.length)) {

@@ -9,6 +9,6 @@
     "file-max-size": {
       "max-lines": 200
     },
-    "class-comment": true,
+    "class-comment": true
   }
 }

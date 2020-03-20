@@ -8,6 +8,7 @@
     },
     "file-max-size": {
       "max-lines": 5
-    }
+    },
+    "class-comment": true
   }
 }

@@ -2,13 +2,14 @@ const { types } = require('../tokenize');
 
 module.exports = {
   check(options, tokens, report) {
-    tokens.find('class', (tokens) => {
-      tokens.prev();
-      while ((tokens.type() == types.whitespace) || (tokens.body() == 'abstract')) {
-        tokens.prev();
+    tokens.find('class', (classToken) => {
+      const prev = classToken.copy();
+      prev.movePrev();
+      while ((prev.type() === types.whitespace) || (prev.body() === 'abstract')) {
+        prev.movePrev();
       }
-      if (tokens.type() !== types.comment) {
-        report('Class have no comment above.', tokens.current());
+      if (prev.type() !== types.comment) {
+        report('Class have no comment above.', classToken.current());
       }
     });
   },
