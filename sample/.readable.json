@@ -4,7 +4,10 @@
   ],
   "rules": {
     "namespace-max-files": {
-      "max-files": 15
+      "max-files": 1
+    },
+    "file-max-size": {
+      "max-lines": 5
     }
   }
 }
