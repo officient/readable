@@ -57,6 +57,10 @@ class Stream {
     return true;
   }
 
+  eatReg(pattern) {
+    return this.eat(new RegExp(pattern));
+  }
+
   eatUntil(pattern, include) {
     const reg = new RegExp(`${pattern.source}`, 'gm');
     reg.lastIndex = this.pos;

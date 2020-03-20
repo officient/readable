@@ -3,7 +3,9 @@ const Stream = require('./stream');
 const types = {
   whitespace: 'whitespace',
   comment: 'comment',
+  label: 'label',
   other: 'other',
+  bracket: 'bracket',
   eof: 'eof',
 };
 
@@ -43,9 +45,12 @@ class Tokens {
     this.pos = pos;
   }
 
-  find(str, callback) {
+  find(strings, callback) {
+    const array = (typeof strings === 'string') ? [strings] : strings;
+
     this.forEach((tokens) => {
-      if (tokens.current().body === str) {
+      const body = tokens.body();
+      if (array.includes(body)) {
         callback(tokens);
       }
     });
@@ -70,7 +75,17 @@ function readToken(stream) {
     return types.comment;
   }
 
-  if (stream.eat(/\S+/)) {
+  if (stream.eat(/[[\]{}()]/)) {
+    return types.bracket;
+  }
+
+  // from official PHP docs
+  const label = '[a-zA-Z_\\u80-\\uff][a-zA-Z0-9_\\u80-\\uff]*';
+  if (stream.eatReg(label)) {
+    return types.label;
+  }
+
+  if (stream.eatReg(/\S+/)) {
     return types.other;
   }
 

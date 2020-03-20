@@ -1,6 +1,14 @@
 const test = require('ava');
 const { tokenize } = require('../src/tokenize');
 
+function hasToken(tokens, token) {
+  let found = false;
+  tokens.find(token, () => {
+    found = true;
+  });
+
+  return found;
+}
 
 test('tokenize track lines and columns', (t) => {
   const tokens = tokenize(`first
@@ -14,11 +22,16 @@ third
 });
 
 test('tokenize detects comments', (t) => {
-  tokenize(`
+  const tokens = tokenize(`
 // comment
 /*
 multiline comment
 */
 # old style`);
-  t.pass();
+  t.true(hasToken(tokens, '# old style'));
+});
+
+test('tokenize detects function calls', (t) => {
+  const tokens = tokenize('var_dump($var);');
+  t.true(hasToken(tokens, 'var_dump'));
 });
