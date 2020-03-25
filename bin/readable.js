@@ -8,7 +8,9 @@
 /* eslint no-console:off */
 
 const init = process.argv.includes('--init');
+const saveBaseLine = process.argv.includes('--save-base-line');
 
+const fs = require('fs');
 const configLoader = require('../src/config-loader');
 const lint = require('../src/lint');
 
@@ -29,7 +31,10 @@ function run() {
     return 2;
   }
 
-  const errors = lint(config);
+  return lint(config);
+}
+
+function printErrors(errors) {
   const pathes = Object.keys(errors);
   if (pathes.length === 0) {
     return 0;
@@ -49,9 +54,20 @@ function run() {
   return 1;
 }
 
+console.error(saveBaseLine);
+console.error(process.argv);
+
 if (init) {
   configLoader.init();
   console.info(`Created default config in ${configLoader.fileName}`);
+} else if (saveBaseLine) {
+  const fileNameIndex = process.argv.indexOf('--save-base-line') + 1;
+  const fileName = process.argv[fileNameIndex] || '.baseline.json';
+  const errors = run();
+  const baseline = errors.generateBaseline();
+  const data = JSON.stringify(baseline, null, 2);
+  fs.writeFileSync(fileName, data);
 } else {
-  process.exitCode = run();
+  const errors = run();
+  process.exitCode = printErrors(errors);
 }

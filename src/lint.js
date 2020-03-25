@@ -13,14 +13,15 @@ function loadRules(rulesConfig) {
   const namespace = [];
   const file = [];
 
-  Object.keys(rulesConfig).forEach((ruleName) => {
-    if (rulesConfig[ruleName] === false) {
+  Object.keys(rulesConfig).forEach((name) => {
+    if (rulesConfig[name] === false) {
       return;
     }
 
     const rule = {
-      module: require(`./rules/${ruleName}`),
-      config: rulesConfig[ruleName],
+      name,
+      module: require(`./rules/${name}`),
+      config: rulesConfig[name],
     };
 
     if (typeof rule.module.checkFiles === 'function') {
@@ -45,9 +46,10 @@ function lint(config) {
 
   const errors = new Errors();
   // rules with namespace scope
-  const reportNamespace = (path, message) => errors.report(path, message);
   rules.namespace.forEach(
-    (rule) => rule.module.checkFiles(rule.config, files, reportNamespace),
+    (rule) => rule.module.checkFiles(rule.config, files, (path, message) => {
+      errors.report(path, rule.name, message, true);
+    }),
   );
 
   // rules with file scope
@@ -60,13 +62,14 @@ function lint(config) {
       errors.report(file, `Cant parse file: ${err.message}`);
       return;
     }
-    const report = (message, token) => errors.report(file, message, token);
     rules.file.forEach(
-      (rule) => rule.module.check(rule.config, tokens, report),
+      (rule) => rule.module.check(rule.config, tokens, (message, token) => {
+        errors.report(file, rule.name, message, token);
+      }),
     );
   });
 
-  return errors.errors;
+  return errors;
 }
 
 module.exports = lint;

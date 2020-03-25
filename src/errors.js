@@ -5,7 +5,28 @@ class Errors {
     this.baseline = baseline || {};
   }
 
+  isBaselined(path, rule) {
+    if (!(path in this.baseline)) {
+      return false;
+    }
+    if (!(rule in this.baseline[path])) {
+      return false;
+    }
+
+    const left = this.baseline[path][rule];
+    if (left === 0) {
+      return false;
+    }
+
+    this.baseline[path][rule] = left - 1;
+    return true;
+  }
+
   report(path, rule, message, token) {
+    if (this.isBaselined(path, rule)) {
+      return;
+    }
+
     if (!(path in this.errors)) {
       this.errors[path] = {};
     }
