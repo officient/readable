@@ -6,6 +6,7 @@ const { readFileSync } = require('fs');
 const { flattenDeep } = require('lodash');
 const { dirsTree } = require('./utils.js');
 const { tokenize } = require('./tokenize');
+const Errors = require('./errors');
 
 // load rules from config
 function loadRules(rulesConfig) {
@@ -36,24 +37,6 @@ function loadRules(rulesConfig) {
   };
 }
 
-// gather errors by path and message
-class Errors {
-  constructor() {
-    this.errors = {};
-  }
-
-  report(path, message, token) {
-    if (!(path in this.errors)) {
-      this.errors[path] = {};
-    }
-    if (!(message in this.errors[path])) {
-      this.errors[path][message] = [];
-    }
-    if (typeof token !== 'undefined') {
-      this.errors[path][message].push(token);
-    }
-  }
-}
 
 // main lint
 function lint(config) {
