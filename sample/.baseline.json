@@ -1,0 +1,16 @@
+{
+  "src": {
+    "namespace-max-files": 1
+  },
+  "src/index.php": {
+    "file-max-size": 1,
+    "forbidden-functions": 1
+  },
+  "src/second.php": {
+    "file-max-size": 1,
+    "class-comment": 1
+  },
+  "src/third.php": {
+    "variable-length": 2
+  }
+}
