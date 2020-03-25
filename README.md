@@ -8,7 +8,7 @@ You can install readable using npm:
 
     $ npm install willem-delbare/readable#master --save-dev
 
-While developing you can update to atest master with
+While developing you can update to latest master with
 
     $ npm uninstall readable && npm install willem-delbare/readable#master
 
@@ -34,11 +34,11 @@ After running `readable --init`, you'll have a `.readable.json` file in your dir
 ```
 ## Baseline
 
-1. Create baseline file:
+Create baseline file:
 
-    npx readable --save-base-line .baseline.json
+    $ npx readable --save-base-line .baseline.json
 
-2. Add `"baseline"` param to your `.readable.json`:
+Add `"baseline"` param to your `.readable.json`:
 
 ```JSON
 {
