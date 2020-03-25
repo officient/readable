@@ -9,6 +9,7 @@
 
 const init = process.argv.includes('--init');
 const saveBaseLine = process.argv.includes('--save-base-line');
+const ignoreBaseLine = process.argv.includes('--ignore-base-line');
 
 const fs = require('fs');
 const configLoader = require('../src/config-loader');
@@ -21,10 +22,10 @@ process.on('uncaughtException', (err) => {
   process.exitCode = 2;
 });
 
-function run() {
+function run(ignore) {
   let config = {};
   try {
-    config = configLoader.load();
+    config = configLoader.load(ignore);
   } catch (err) {
     console.error(`Can't load config ${configLoader.fileName}`);
     console.error(err.message);
@@ -42,11 +43,15 @@ function printErrors(errors) {
 
   pathes.forEach((path) => {
     console.error(path);
-    Object.keys(errors[path]).forEach((message) => {
-      console.error(`  ${message}`);
-      const tokens = errors[path][message];
-      tokens.forEach((token) => {
-        console.error(`    at line ${token.line} column ${token.column}`);
+    Object.keys(errors[path]).forEach((rule) => {
+      Object.keys(errors[path][rule]).forEach((message) => {
+        console.error(`  ${message}`);
+        const tokens = errors[path][rule][message];
+        tokens.forEach((token) => {
+          if (token !== true) {
+            console.error(`    at line ${token.line} column ${token.column}`);
+          }
+        });
       });
     });
   });
@@ -54,20 +59,17 @@ function printErrors(errors) {
   return 1;
 }
 
-console.error(saveBaseLine);
-console.error(process.argv);
-
 if (init) {
   configLoader.init();
   console.info(`Created default config in ${configLoader.fileName}`);
 } else if (saveBaseLine) {
   const fileNameIndex = process.argv.indexOf('--save-base-line') + 1;
   const fileName = process.argv[fileNameIndex] || '.baseline.json';
-  const errors = run();
+  const errors = run(true);
   const baseline = errors.generateBaseline();
   const data = JSON.stringify(baseline, null, 2);
   fs.writeFileSync(fileName, data);
 } else {
-  const errors = run();
-  process.exitCode = printErrors(errors);
+  const errors = run(ignoreBaseLine);
+  process.exitCode = printErrors(errors.errors);
 }

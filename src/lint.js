@@ -44,7 +44,7 @@ function lint(config) {
   const rules = loadRules(config.rules);
   const files = dirsTree(config.pathes, '.php');
 
-  const errors = new Errors();
+  const errors = new Errors(config.baseline);
   // rules with namespace scope
   rules.namespace.forEach(
     (rule) => rule.module.checkFiles(rule.config, files, (path, message) => {

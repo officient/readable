@@ -13,11 +13,22 @@ function init() {
   fs.copyFileSync(source, fileName);
 }
 
-function load() {
+function load(ignoreBaseLine) {
   const data = fs.readFileSync(fileName, 'utf8');
   const defaultConfig = require('./default.readable.json');
+  const config = merge(defaultConfig, JSON.parse(data));
 
-  return merge(defaultConfig, JSON.parse(data));
+  // load the baseline
+  if (ignoreBaseLine || (!config.baseline)) {
+    config.baseline = {};
+
+    return config;
+  }
+
+  const baseline = fs.readFileSync(config.baseline, 'utf8');
+  config.baseline = JSON.parse(baseline);
+
+  return config;
 }
 
 module.exports = {

@@ -6,7 +6,11 @@ PHP code analyzer, similar to eslint, but with a focus on readability. The idea 
 
 You can install readable using npm:
 
-    $ npm install readable --save-dev
+    $ npm install willem-delbare/readable#master --save-dev
+
+While developing you can update to atest master with
+
+    $ npm uninstall readable && npm install willem-delbare/readable#master
 
 You should then set up a configuration file:
 
@@ -22,12 +26,39 @@ After running `readable --init`, you'll have a `.readable.json` file in your dir
 
 ```JSON
 {
-    "pathes": [
-        "src/"
-    ],
-    "rules": {}
+  "pathes": [
+    "src/"
+  ],
+  "rules": {}
 }
 ```
+## Baseline
+
+1. Create baseline file:
+
+    npx readable --save-base-line .baseline.json
+
+2. Add `"baseline"` param to your `.readable.json`:
+
+```JSON
+{
+  "baseline": ".baseline.json",
+  "pathes": [
+    "src/"
+  ],
+  "rules": {}
+}
+```
+
+Now errors from baseline file would be ignored. If you want to see all errors run
+with `--ignore-base-line` flag:
+
+    $ npx readable --ignore-base-line
+
+## Rules
+
+See [Rules and default configuration](docs/rules.md) for default rules.
+Or read [how to create custom rule](docs/add-rule.md).
 
 ### Development
 
@@ -57,7 +88,3 @@ To test:
  - [ ] in order to use the analyzer on a CI on an existing codebase, we need a whitelist approach. One rule might have 100 violations, but we still want to use that rule on the codebase for new code. That means those 100 existing violations should be ignored. An ignore-config-file (similar to 'Psalm' by vimeo) should be used. A command should exist to generate such an ignore file. The ignore file should be json-structured. It should contain the types of violations, the filename/path and the amount of occurrences to be ignored in that file or folder.
  - [x] every rule should have at least a 2 unit tests, a green example and an example that is in violation
 
-## Rules
-
-See [Rules and default configuration](docs/rules.md) for default rules.
-Or read [how to create custom rule](docs/add-rule.md).
