@@ -1,3 +1,8 @@
+/**
+ * A module for tokenizing PHP code.
+ * @module tokenize
+ */
+
 const Stream = require('./stream');
 
 /**
@@ -16,6 +21,13 @@ const types = {
 };
 
 /**
+ * @typedef Token
+ * @type {object}
+ * @property {string} type - token type.
+ * @property {string} body - token body.
+ */
+
+/**
  * Class for navigation over array tokens
  */
 class Tokens {
@@ -24,16 +36,45 @@ class Tokens {
     this.pos = pos || 0;
   }
 
-  movePrev() { this.pos -= 1; }
+  /**
+   * Is current token a code (not whitespace adn comment)
+   * @return {Boolean}
+   */
+  isCode() {
+    const type = this.type();
+    return (type !== types.whitespace) && (type !== types.comment);
+  }
 
-  moveVext() { this.pos += 1; }
+  /**
+   * Moves current position
+   * @param  {Boolean} [backward] move backward
+   * @param  {Boolean} [includeAll] include comments and whotespace
+   */
+  step(backward, includeAll) {
+    const step = backward ? -1 : 1;
+    do {
+      this.pos += step;
+    } while ((!includeAll) || (!this.isCode));
+  }
 
+  /**
+   * Returns current token body
+   * @return {string}
+   */
   body() { return this.current().body; }
 
+  /**
+   * Returns current token type
+   * @return {string}
+   */
   type() { return this.current().type; }
 
   copy() { return new Tokens(this.array, this.pos); }
 
+  /**
+   * Returns current token
+   * @return {Token}
+   */
   current() {
     if ((this.pos < 0) || (this.pos >= this.array.length)) {
       return { body: '', type: types.eof };

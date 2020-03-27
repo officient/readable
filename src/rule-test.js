@@ -4,6 +4,7 @@
 const ava = require('ava');
 const { tokenize } = require('./tokenize');
 
+
 function ruleTest(name, rule, tests) {
   tests.valid.forEach((test, i) => {
     const tokens = tokenize(test.src);

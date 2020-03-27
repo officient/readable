@@ -63,7 +63,7 @@ Below is an exhaustive set of the initial rules we need implemented. Each rule s
 
 - [ ] avoid triple inner for/foreach (eg for within for within for loop)
 - [x] avoid a class without a single comment at the top stating purpose
-- [ ] avoid any function longer than 50 lines
+- [?] avoid any function longer than 50 lines
 - [ ] avoid indent deeper than 4 (maximum block nesting, eg for loop within an if within a for loop within a for loop)
 - [ ] avoid complicated ifs (eg more than 2 &&.., combination of && and ||)
 - [ ] avoid ternary operator combined with line length exceeding 50 chars

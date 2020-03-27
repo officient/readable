@@ -8,6 +8,20 @@ const { dirsTree } = require('./utils.js');
 const { tokenize } = require('./tokenize');
 const Errors = require('./errors');
 
+/**
+ * @typedef {Object} NamespaceRule
+ * @property {checkFiles} checkFiles function to check
+ */
+
+/**
+ * Rule funtion to check the file tree
+ * @callback checkFiles
+ * @param {*} options passed from config file
+ * @param {string[][]} files tree
+ * @param {namespaseReport} report error callback
+ */
+
+
 // load rules from config
 function loadRules(rulesConfig) {
   const namespace = [];
