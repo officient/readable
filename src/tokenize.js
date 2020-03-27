@@ -107,12 +107,20 @@ class Tokens {
   }
 }
 
+const space = /\s+/g;
+const nonSpace = /\S+/g;
+const brackets = /[[\]{}()]/g;
+// from official PHP docs
+const labelText = '[a-zA-Z_\\u0080-\\u00ff][a-zA-Z0-9_\\u0080-\\u00ff]*';
+const label = new RegExp(labelText, 'g');
+const variable = new RegExp(`\\$${labelText}`, 'g');
 
 function readToken(stream) {
   if (stream.eat('\r') || stream.eat('\n')) {
     return types.whitespace;
   }
-  if (stream.eat(/\s+/)) {
+
+  if (stream.eat(space)) {
     return types.whitespace;
   }
 
@@ -120,26 +128,25 @@ function readToken(stream) {
     stream.eatUntil(/[\r\n]/);
     return types.comment;
   }
+
   if (stream.eat('/*')) {
     stream.eatUntil(/\*\//, true);
     return types.comment;
   }
 
-  if (stream.eat(/[[\]{}()]/)) {
+  if (stream.eat(brackets)) {
     return types.bracket;
   }
 
-  // from official PHP docs
-  const label = '[a-zA-Z_\\u0080-\\u00ff][a-zA-Z0-9_\\u0080-\\u00ff]*';
-  if (stream.eatReg(label)) {
+  if (stream.eat(label)) {
     return types.label;
   }
 
-  if (stream.eatReg(`\\$${label}`)) {
+  if (stream.eat(variable)) {
     return types.variable;
   }
 
-  if (stream.eatReg(/\S+/)) {
+  if (stream.eat(nonSpace)) {
     return types.other;
   }
 

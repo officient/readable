@@ -46,19 +46,15 @@ class Stream {
       return this.eatString(pattern);
     }
 
-    const reg = new RegExp(`${pattern.source}`, 'g');
-    reg.lastIndex = this.pos;
-    const match = reg.exec(this.string);
+    const p = pattern;
+    p.lastIndex = this.pos;
+    const match = p.exec(this.string);
     if ((match === null) || (match.index !== this.pos)) {
       return false;
     }
 
     this.pos += match[0].length;
     return true;
-  }
-
-  eatReg(pattern) {
-    return this.eat(new RegExp(pattern));
   }
 
   eatUntil(pattern, include) {

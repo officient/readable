@@ -3,7 +3,7 @@ const { tokenize } = require('../src/tokenize');
 
 function hasToken(tokens, token) {
   let found = false;
-  tokens.find(token, () => {
+  tokens.matchAll(token, () => {
     found = true;
   });
 
