@@ -11,13 +11,13 @@ ruleTest('file-max-size', rule, {
   valid: [
     {
       src,
-      config: { 'max-lines': 5 },
+      config: 5,
     },
   ],
   invalid: [
     {
       src,
-      config: { 'max-lines': 2 },
+      config: 2,
       messageIncludes: 'than 2 lines [4]',
     },
   ],

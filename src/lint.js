@@ -21,6 +21,32 @@ const Errors = require('./errors');
  * @param {namespaseReport} report error callback
  */
 
+/**
+ * This callback is called by rule to log an error in files tree
+ * @callback namespaseReport
+ * @param {string} path where error occured
+ * @param {string} messege
+ */
+
+/**
+ * @typedef {Object} Rule
+ * @property {check} check tokens stream for errors
+ */
+
+/**
+ * Rule funtion to check the file tree
+ * @callback check
+ * @param {*} options passed from config file
+ * @param {tokenize~Tokens} tokens
+ * @param {report} report error callback
+ */
+
+/**
+ * This callback is called by rule to log an error
+ * @callback report
+ * @param {string} messege
+ * @param {tokenize~Token} token where error occured
+ */
 
 // load rules from config
 function loadRules(rulesConfig) {

@@ -23,8 +23,10 @@ const types = {
 /**
  * @typedef Token
  * @type {object}
- * @property {string} type - token type.
- * @property {string} body - token body.
+ * @property {string} type - token type
+ * @property {string} body - token body
+ * @property {number} line - token line
+ * @property {number} column - token column
  */
 
 /**
@@ -93,7 +95,7 @@ class Tokens {
     this.pos = pos;
   }
 
-  find(strings, callback) {
+  matchAll(strings, callback) {
     const array = (typeof strings === 'string') ? [strings] : strings;
 
     this.forEach((tokens) => {

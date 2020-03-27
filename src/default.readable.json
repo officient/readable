@@ -3,18 +3,12 @@
     "src/"
   ],
   "rules": {
-    "namespace-max-files": {
-      "max-files": 15
-    },
-    "file-max-size": {
-      "max-lines": 200
-    },
+    "namespace-max-files": 15,
+    "file-max-size": 200,
     "class-comment": true,
-    "forbidden-functions": {
-      "functions": [
-        "eval", "print_r", "var_export", "var_dump", "phpinfo", "exec"
-      ]
-    },
+    "forbidden-functions": [
+      "eval", "print_r", "var_export", "var_dump", "phpinfo", "exec"
+    ],
     "variable-length": {
       "min-length": 3,
       "whitelist": ["$id", "$i"]
