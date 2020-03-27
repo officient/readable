@@ -74,6 +74,10 @@ To test:
 
     npm run test
 
+To update api docs:
+
+    npm run docs
+
 
 ## TODO
 

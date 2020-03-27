@@ -1,5 +1,10 @@
 const Stream = require('./stream');
 
+/**
+ * Token types enum.
+ * @readonly
+ * @enum {string}
+ */
 const types = {
   whitespace: 'whitespace',
   comment: 'comment',
@@ -10,8 +15,9 @@ const types = {
   eof: 'eof',
 };
 
-// wraper around array of tokens
-// to hep search and navigate
+/**
+ * Class for navigation over array tokens
+ */
 class Tokens {
   constructor(tokens, pos) {
     this.array = tokens;
