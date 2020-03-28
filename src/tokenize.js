@@ -39,7 +39,7 @@ class Tokens {
   }
 
   /**
-   * Is current token a code (not whitespace adn comment)
+   * Is current token a code (not whitespace and comment)
    * @return {Boolean}
    */
   isCode() {
@@ -50,14 +50,17 @@ class Tokens {
   /**
    * Moves current position
    * @param  {Boolean} [backward] move backward
-   * @param  {Boolean} [includeAll] include comments and whotespace
+   * @param  {Boolean} [includeAll] include comments and whitespace
    * @return {this}
    */
   step(backward, includeAll) {
     const step = backward ? -1 : 1;
     do {
       this.pos += step;
-    } while ((!includeAll) || (!this.isCode));
+      if (this.type() === types.eof || includeAll) {
+        return this;
+      }
+    } while ((!this.isCode()));
 
     return this;
   }

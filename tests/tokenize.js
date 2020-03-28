@@ -28,7 +28,7 @@ test('tokenize detects comments', (t) => {
 multiline comment
 */
 # old style`);
-  t.true(hasToken(tokens, '# old style'));
+  t.is(tokens.array[tokens.array.length - 1].body, '# old style');
 });
 
 test('tokenize detects function calls', (t) => {
