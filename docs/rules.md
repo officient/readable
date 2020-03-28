@@ -70,12 +70,12 @@ Below is an exhaustive set of the initial rules we need implemented. Each rule s
 - [ ] avoid complicated ifs (eg more than 2 &&.., combination of && and ||)
 - [ ] avoid ternary operator combined with line length exceeding 50 chars
 - [x] avoid namespaces with 15+ files
-- [ ] avoid loops with inside of them more than 15 lines (a block that should be a function)
+- [?] avoid loops with inside of them more than 15 lines (a block that should be a function)
 - [x] avoid files with more than 200 lines.
 - [x] avoid dangerous calls to eval, print_r, var_export, var_dump, phpinfo, exec,..(forbidden function list)
 - [ ] avoid assignment inside of an if statement
-- [ ] avoid an if statement or for loop without braces
+- [?] avoid an if statement or for loop without braces
 - [x] avoid variables with names shorter than 3 letters (while whitelisting $i or $id)
 - [x] avoid function names starting with a certain pattern (configurable list of prefixes)
 - [ ] avoid overriding of a function's arguments
-- [ ] avoid empty catch blocks
+- [?] avoid empty catch blocks

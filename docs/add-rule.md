@@ -56,7 +56,8 @@ forbidden words we report it.
 
 Create unit test for your rule in `tests\rules\forbidden-function-prefix.js`.
 
-```javascriptconst ruleTest = require('../../src/rule-test');
+```javascript
+const ruleTest = require('../../src/rule-test');
 const rule = require('../../src/rules/forbidden-function-prefix');
 
 const code = `
