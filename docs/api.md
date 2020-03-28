@@ -63,7 +63,7 @@ Class for navigation over array tokens
 <a name="module_tokenize..Tokens+isCode"></a>
 
 #### tokens.isCode() ⇒ <code>Boolean</code>
-Is current token a code (not whitespace adn comment)
+Is current token a code (not whitespace and comment)
 
 **Kind**: instance method of [<code>Tokens</code>](#module_tokenize..Tokens)  
 <a name="module_tokenize..Tokens+step"></a>
@@ -76,7 +76,7 @@ Moves current position
 | Param | Type | Description |
 | --- | --- | --- |
 | [backward] | <code>Boolean</code> | move backward |
-| [includeAll] | <code>Boolean</code> | include comments and whotespace |
+| [includeAll] | <code>Boolean</code> | include comments and whitespace |
 
 <a name="module_tokenize..Tokens+body"></a>
 
