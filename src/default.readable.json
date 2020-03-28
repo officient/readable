@@ -6,6 +6,7 @@
     "namespace-max-files": 15,
     "file-max-size": 200,
     "class-comment": true,
+    "forbidden-function-prefix": ["check"],
     "forbidden-functions": [
       "eval", "print_r", "var_export", "var_dump", "phpinfo", "exec"
     ],

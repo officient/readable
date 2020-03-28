@@ -11,9 +11,7 @@
 Avoid namespaces with 15+ files
 
 ```JSON
-"namespace-max-files": {
-  "max-files": 15
-}
+"namespace-max-files": 15
 ```
 
 ### file-max-size
@@ -21,9 +19,7 @@ Avoid namespaces with 15+ files
 Avoid files with more than 200 lines
 
 ```JSON
-"file-max-size": {
-  "max-lines": 200
-}
+"file-max-size": 200
 ```
 
 ### class-comment
@@ -39,11 +35,9 @@ Avoid a class without a single comment at the top stating purpose
 Avoid dangerous calls to eval, print_r, var_export, var_dump, phpinfo, exec,..(forbidden function list)
 
 ```JSON
-"forbidden-functions": {
-  "functions": [
-    "eval", "print_r", "var_export", "var_dump", "phpinfo", "exec"
-  ]
-}
+"forbidden-functions": [
+  "eval", "print_r", "var_export", "var_dump", "phpinfo", "exec"
+],
 ```
 
 ### variable-length
@@ -52,9 +46,17 @@ Avoid variables with names shorter than 3 letters (while whitelisting $i or $id)
 
 ```JSON
 "variable-length": {
-      "min-length": 3,
-      "whitelist": ["$id", "$i"]
-    }
+  "min-length": 3,
+  "whitelist": ["$id", "$i"]
+}
+```
+
+### forbidden-function-prefix
+
+
+
+```JSON
+"forbidden-function-prefix": ["check"],
 ```
 
 ## TODO
@@ -74,6 +76,6 @@ Below is an exhaustive set of the initial rules we need implemented. Each rule s
 - [ ] avoid assignment inside of an if statement
 - [ ] avoid an if statement or for loop without braces
 - [x] avoid variables with names shorter than 3 letters (while whitelisting $i or $id)
-- [ ] avoid function names starting with a certain pattern (configurable list of prefixes)
+- [x] avoid function names starting with a certain pattern (configurable list of prefixes)
 - [ ] avoid overriding of a function's arguments
 - [ ] avoid empty catch blocks
