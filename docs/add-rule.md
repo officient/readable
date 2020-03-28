@@ -50,7 +50,7 @@ function checkMsg($msg) {
 
 We shoud found all occurances of `function`, we should select the next token
 after it (`step()`) and get it's body. If we found that name starts from
-forbidden words we
+forbidden words we report it.
 
 ## ruleTest helper
 
