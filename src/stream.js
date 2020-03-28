@@ -32,8 +32,7 @@ class Stream {
   }
 
   eatString(pattern) {
-    const slice = this.string.slice(this.pos, this.pos + pattern.length);
-    if (slice === pattern) {
+    if (this.string.startsWith(pattern, this.pos)) {
       this.pos += pattern.length;
       return true;
     }

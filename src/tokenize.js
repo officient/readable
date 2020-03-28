@@ -57,10 +57,10 @@ class Tokens {
     const step = backward ? -1 : 1;
     do {
       this.pos += step;
-      if (this.type() === types.eof || includeAll) {
+      if (includeAll) {
         return this;
       }
-    } while ((!this.isCode()));
+    } while (!this.isCode());
 
     return this;
   }
