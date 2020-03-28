@@ -8,16 +8,16 @@ const Stream = require('./stream');
 /**
  * Token types enum.
  * @readonly
- * @enum {string}
+ * @enum {number}
  */
 const types = {
-  whitespace: 'whitespace',
-  comment: 'comment',
-  label: 'label',
-  variable: 'variable',
-  other: 'other',
-  bracket: 'bracket',
-  eof: 'eof',
+  whitespace: 0,
+  comment: 1,
+  label: 2,
+  variable: 3,
+  other: 4,
+  bracket: 5,
+  eof: 6,
 };
 
 /**
@@ -51,12 +51,15 @@ class Tokens {
    * Moves current position
    * @param  {Boolean} [backward] move backward
    * @param  {Boolean} [includeAll] include comments and whotespace
+   * @return {this}
    */
   step(backward, includeAll) {
     const step = backward ? -1 : 1;
     do {
       this.pos += step;
     } while ((!includeAll) || (!this.isCode));
+
+    return this;
   }
 
   /**
@@ -89,12 +92,27 @@ class Tokens {
     const { pos } = this;
     for (let i = 0; i < this.array.length; i += 1) {
       this.pos = i;
-      callback(this);
+      if (this.isCode()) {
+        callback(this);
+      }
     }
     // keep position
     this.pos = pos;
   }
 
+  /**
+   * This callback is called by matchAll and for Each
+   * @callback tockensCallback
+   * @param {Tokens} tokens
+   */
+
+  /**
+   * Match all occurances of string or array of
+   * string
+   *
+   * @param  {(string|string[])}
+   * @param  {tockensCallback} callback function
+   */
   matchAll(strings, callback) {
     const array = (typeof strings === 'string') ? [strings] : strings;
 
