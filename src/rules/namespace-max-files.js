@@ -18,8 +18,7 @@ function checkMaxFiles(maxFiles, files, report) {
 }
 
 module.exports = {
-  checkFiles(options, files, report) {
-    const maxFiles = options['max-files'];
+  checkFiles(maxFiles, files, report) {
     checkMaxFiles(maxFiles, files, report);
   },
 };
