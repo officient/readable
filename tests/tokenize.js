@@ -31,6 +31,37 @@ multiline comment
   t.is(tokens.array[tokens.array.length - 1].body, '# old style');
 });
 
+test('tokenize string', (t) => {
+  const tokens = tokenize(`
+"double \\" ";
+'single \\' ';
+`);
+
+  t.true(hasToken(tokens, '"double \\" "'));
+  t.true(hasToken(tokens, "'single \\' '"));
+});
+
+test('tokenize numbers', (t) => {
+  const tokens = tokenize(`
+// yes, this is a valid php numbers in 7.4
+1_234.567
+6.674_083e-11
+0xCAFE_F00D
+`);
+
+  t.true(hasToken(tokens, '1_234.567'));
+});
+
+test('tokenize operators', (t) => {
+  const tokens = tokenize(`
+if( !isset($city['id']))
+{
+
+}`);
+  t.true(hasToken(tokens, 'isset'));
+  t.true(hasToken(tokens, '!'));
+});
+
 test('tokenize detects function calls', (t) => {
   const tokens = tokenize('var_dump($var);');
   t.true(hasToken(tokens, 'var_dump'));

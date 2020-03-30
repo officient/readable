@@ -17,7 +17,10 @@ const types = {
   variable: 3,
   other: 4,
   bracket: 5,
-  eof: 6,
+  operator: 6,
+  string: 7,
+  number: 8,
+  eof: 9,
 };
 
 /**
@@ -88,7 +91,7 @@ class Tokens {
   stepTo(strings) {
     do {
       this.step();
-    } while (!(this.matches(strings) || this.type === types.eof));
+    } while (!(this.matches(strings) || this.type() === types.eof));
     return this;
   }
 
@@ -193,6 +196,8 @@ const brackets = /[[\]{}()]/g;
 const labelText = '[a-zA-Z_\\u0080-\\u00ff][a-zA-Z0-9_\\u0080-\\u00ff]*';
 const label = new RegExp(labelText, 'g');
 const variable = new RegExp(`\\$${labelText}`, 'g');
+const operators = /[*+\-%!^&|?><>=@]+/g;
+const number = /[0-9][0-9._]*/g;
 
 function readToken(stream) {
   if (stream.eat('\r') || stream.eat('\n')) {
@@ -223,6 +228,24 @@ function readToken(stream) {
 
   if (stream.eat(variable)) {
     return types.variable;
+  }
+
+  if (stream.eat('"')) {
+    stream.eatUntil(/[^\\]"/, true);
+    return types.string;
+  }
+
+  if (stream.eat("'")) {
+    stream.eatUntil(/[^\\]'/, true);
+    return types.string;
+  }
+
+  if (stream.eat(number)) {
+    return types.number;
+  }
+
+  if (stream.eat(operators)) {
+    return types.operator;
   }
 
   if (stream.eat(nonSpace)) {
