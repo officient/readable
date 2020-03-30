@@ -51,9 +51,9 @@ Add `"baseline"` param to your `.readable.json`:
 ```
 
 Now errors from baseline file would be ignored. If you want to see all errors run
-with `--ignore-base-line` flag:
+with `--disable-base-line` flag:
 
-    $ npx readable --ignore-base-line
+    $ npx readable --disable-base-line
 
 ## Rules
 

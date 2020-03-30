@@ -9,7 +9,7 @@
 
 const init = process.argv.includes('--init');
 const saveBaseLine = process.argv.includes('--save-base-line');
-const ignoreBaseLine = process.argv.includes('--ignore-base-line');
+const disableBaseLine = process.argv.includes('--disable-base-line');
 
 const fs = require('fs');
 const configLoader = require('../src/config-loader');
@@ -70,6 +70,6 @@ if (init) {
   const data = JSON.stringify(baseline, null, 2);
   fs.writeFileSync(fileName, data);
 } else {
-  const errors = run(ignoreBaseLine);
+  const errors = run(disableBaseLine);
   process.exitCode = printErrors(errors.errors);
 }
