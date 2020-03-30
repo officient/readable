@@ -37,6 +37,9 @@ A module for tokenizing PHP code.
     * [~Tokens](#module_tokenize..Tokens)
         * [.isCode()](#module_tokenize..Tokens+isCode) ⇒ <code>Boolean</code>
         * [.step([backward], [includeAll])](#module_tokenize..Tokens+step) ⇒ <code>this</code>
+        * [.matches(strings)](#module_tokenize..Tokens+matches) ⇒ <code>Boolean</code>
+        * [.stepTo(strings)](#module_tokenize..Tokens+stepTo) ⇒ <code>this</code>
+        * [.stepToClosing()](#module_tokenize..Tokens+stepToClosing) ⇒ <code>this</code>
         * [.body()](#module_tokenize..Tokens+body) ⇒ <code>string</code>
         * [.type()](#module_tokenize..Tokens+type) ⇒ <code>string</code>
         * [.current()](#module_tokenize..Tokens+current) ⇒ <code>Token</code>
@@ -55,6 +58,9 @@ Class for navigation over array tokens
 * [~Tokens](#module_tokenize..Tokens)
     * [.isCode()](#module_tokenize..Tokens+isCode) ⇒ <code>Boolean</code>
     * [.step([backward], [includeAll])](#module_tokenize..Tokens+step) ⇒ <code>this</code>
+    * [.matches(strings)](#module_tokenize..Tokens+matches) ⇒ <code>Boolean</code>
+    * [.stepTo(strings)](#module_tokenize..Tokens+stepTo) ⇒ <code>this</code>
+    * [.stepToClosing()](#module_tokenize..Tokens+stepToClosing) ⇒ <code>this</code>
     * [.body()](#module_tokenize..Tokens+body) ⇒ <code>string</code>
     * [.type()](#module_tokenize..Tokens+type) ⇒ <code>string</code>
     * [.current()](#module_tokenize..Tokens+current) ⇒ <code>Token</code>
@@ -78,6 +84,35 @@ Moves current position
 | [backward] | <code>Boolean</code> | move backward |
 | [includeAll] | <code>Boolean</code> | include comments and whitespace |
 
+<a name="module_tokenize..Tokens+matches"></a>
+
+#### tokens.matches(strings) ⇒ <code>Boolean</code>
+Check if current body matches string
+or array of strings
+
+**Kind**: instance method of [<code>Tokens</code>](#module_tokenize..Tokens)  
+
+| Param | Type |
+| --- | --- |
+| strings | <code>string</code> \| <code>Array.&lt;string&gt;</code> | 
+
+<a name="module_tokenize..Tokens+stepTo"></a>
+
+#### tokens.stepTo(strings) ⇒ <code>this</code>
+Steps to next occutance of strings
+
+**Kind**: instance method of [<code>Tokens</code>](#module_tokenize..Tokens)  
+
+| Param | Type |
+| --- | --- |
+| strings | <code>string</code> \| <code>Array.&lt;string&gt;</code> | 
+
+<a name="module_tokenize..Tokens+stepToClosing"></a>
+
+#### tokens.stepToClosing() ⇒ <code>this</code>
+Steps to correct closing brace
+
+**Kind**: instance method of [<code>Tokens</code>](#module_tokenize..Tokens)  
 <a name="module_tokenize..Tokens+body"></a>
 
 #### tokens.body() ⇒ <code>string</code>
