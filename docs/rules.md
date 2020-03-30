@@ -66,12 +66,21 @@ Avoid variables with names shorter than 3 letters (while whitelisting $i or $id)
   "whitelist": ["$id", "$i"]
 }
 ```
+
 ### function-max-size
 
 Avoid any function longer than 50 lines:
 
 ```JSON
 "function-max-size": 50,
+```
+
+### loop-max-size
+
+Aavoid loops with inside of them more than 15 lines (a block that should be a function):
+
+```JSON
+"loop-max-size": 15,
 ```
 
 ### forbidden-function-prefix
@@ -93,7 +102,7 @@ Below is an exhaustive set of the initial rules we need implemented. Each rule s
 - [ ] avoid complicated ifs (eg more than 2 &&.., combination of && and ||)
 - [ ] avoid ternary operator combined with line length exceeding 50 chars
 - [x] avoid namespaces with 15+ files
-- [?] avoid loops with inside of them more than 15 lines (a block that should be a function)
+- [x] avoid loops with inside of them more than 15 lines (a block that should be a function)
 - [x] avoid files with more than 200 lines.
 - [x] avoid dangerous calls to eval, print_r, var_export, var_dump, phpinfo, exec,..(forbidden function list)
 - [ ] avoid assignment inside of an if statement

@@ -6,6 +6,7 @@
     "empty-catch": true,
     "namespace-max-files": 15,
     "file-max-size": 200,
+    "loop-max-size": 15,
     "function-max-size": 50,
     "class-comment": true,
     "missing-braces": true,
