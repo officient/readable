@@ -1,21 +1,16 @@
 {
-  "baseline": ".baseline.json",
   "pathes": [
     "src/"
   ],
   "rules": {
-    "namespace-max-files": {
-      "max-files": 1
-    },
-    "file-max-size": {
-      "max-lines": 5
-    },
+    "empty-catch": true,
+    "namespace-max-files": 2,
+    "file-max-size": 200,
     "class-comment": true,
-    "forbidden-functions": {
-      "functions": [
-        "eval", "print_r", "var_export", "var_dump", "phpinfo", "exec"
-      ]
-    },
+    "forbidden-function-prefix": ["check"],
+    "forbidden-functions": [
+      "eval", "print_r", "var_export", "var_dump", "phpinfo", "exec"
+    ],
     "variable-length": {
       "min-length": 3,
       "whitelist": ["$id", "$i"]
