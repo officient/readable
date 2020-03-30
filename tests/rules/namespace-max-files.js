@@ -20,3 +20,10 @@ test.cb('namespace-max-files reports', (t) => {
     t.end();
   });
 });
+
+const files2 = [['./src/1.php'], './src/2.php', './src/3.php', './src/4.php'];
+test.cb('namespace-max-files reports when first file is dir', (t) => {
+  checkFiles(2, files2, () => {
+    t.end();
+  });
+});
