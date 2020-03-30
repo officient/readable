@@ -66,6 +66,33 @@ class Tokens {
   }
 
   /**
+   * Check if current body matches string
+   * or array of strings
+   * @param  {(string|string[])}
+   * @return {Boolean}
+   */
+  matches(strings) {
+    if (typeof strings === 'string') {
+      return this.body() === strings;
+    }
+
+    return strings.includes(this.body());
+  }
+
+  /**
+   * Steps to next occutance of strings
+   *
+   * @param  {(string|string[])}
+   * @return {this}
+   */
+  stepTo(strings) {
+    do {
+      this.step();
+    } while (!(this.matches(strings) || this.type === types.eof));
+    return this;
+  }
+
+  /**
    * Returns current token body
    * @return {string}
    */

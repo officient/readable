@@ -40,3 +40,9 @@ test('tokenize detects variables', (t) => {
   const tokens = tokenize('var_dump($var);');
   t.true(hasToken(tokens, '$var'));
 });
+
+test('tokenize steps to', (t) => {
+  const tokens = tokenize('one(); next(); last();');
+
+  t.is(tokens.stepTo('next').body(), 'next');
+});
