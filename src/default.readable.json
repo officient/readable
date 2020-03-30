@@ -3,6 +3,7 @@
     "src/"
   ],
   "rules": {
+    "empty-catch": true,
     "namespace-max-files": 15,
     "file-max-size": 200,
     "class-comment": true,

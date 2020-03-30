@@ -22,6 +22,14 @@ Avoid files with more than 200 lines
 "file-max-size": 200
 ```
 
+### empty-catch
+
+Avoid empty catch blocks:
+
+```JSON
+"empty-catch": true
+```
+
 ### class-comment
 
 Avoid a class without a single comment at the top stating purpose
@@ -53,7 +61,7 @@ Avoid variables with names shorter than 3 letters (while whitelisting $i or $id)
 
 ### forbidden-function-prefix
 
-
+Фvoid function names starting with a certain pattern:
 
 ```JSON
 "forbidden-function-prefix": ["check"],
@@ -76,6 +84,6 @@ Below is an exhaustive set of the initial rules we need implemented. Each rule s
 - [ ] avoid assignment inside of an if statement
 - [?] avoid an if statement or for loop without braces
 - [x] avoid variables with names shorter than 3 letters (while whitelisting $i or $id)
-- [x] avoid function names starting with a certain pattern (configurable list of prefixes)
+- [x]
 - [ ] avoid overriding of a function's arguments
-- [?] avoid empty catch blocks
+- [x] avoid empty catch blocks
