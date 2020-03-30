@@ -48,6 +48,14 @@ Avoid dangerous calls to eval, print_r, var_export, var_dump, phpinfo, exec,..(f
 ],
 ```
 
+### missing-braces
+
+Avoid an if statement or for loop without braces:
+
+```JSON
+"missing-braces": true,
+```
+
 ### variable-length
 
 Avoid variables with names shorter than 3 letters (while whitelisting $i or $id)
@@ -82,7 +90,7 @@ Below is an exhaustive set of the initial rules we need implemented. Each rule s
 - [x] avoid files with more than 200 lines.
 - [x] avoid dangerous calls to eval, print_r, var_export, var_dump, phpinfo, exec,..(forbidden function list)
 - [ ] avoid assignment inside of an if statement
-- [?] avoid an if statement or for loop without braces
+- [x] avoid an if statement or for loop without braces
 - [x] avoid variables with names shorter than 3 letters (while whitelisting $i or $id)
 - [x]
 - [ ] avoid overriding of a function's arguments
