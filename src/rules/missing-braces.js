@@ -3,7 +3,7 @@ const matches = ['if', 'elseif', 'else', 'for', 'foreach'];
 module.exports = {
   check(_, tokens, report) {
     tokens.matchAll(matches, (token) => {
-      const braket = token.step();
+      const braket = token.copy().step();
       if (braket.body() === '(') {
         braket.stepToClosing().step();
       }
