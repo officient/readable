@@ -93,6 +93,37 @@ class Tokens {
   }
 
   /**
+   * Steps to correct closing brace
+   *
+   * @return {this}
+   */
+  stepToClosing() {
+    const pairs = { '{': '}', '[': ']', '(': ')' };
+    const open = this.body();
+    if (!(open in pairs)) {
+      // do nothing if not brace
+      return this;
+    }
+    const close = pairs[open];
+    let level = 1;
+    while (level > 0) {
+      this.step();
+      if (this.body() === open) {
+        level += 1;
+      }
+      if (this.body() === close) {
+        level -= 1;
+      }
+      if (this.type() === types.eof) {
+        // reached end of file
+        break;
+      }
+    }
+
+    return this;
+  }
+
+  /**
    * Returns current token body
    * @return {string}
    */

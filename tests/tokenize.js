@@ -46,3 +46,9 @@ test('tokenize steps to', (t) => {
 
   t.is(tokens.stepTo('next').body(), 'next');
 });
+
+test('tokenize steps to close', (t) => {
+  const tokens = tokenize('{ { } } }');
+  const closed = tokens.stepToClosing();
+  t.is(closed.current().column, 7);
+});
