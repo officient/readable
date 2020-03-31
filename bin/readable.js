@@ -5,6 +5,9 @@
  * @author Denys Potapov
  */
 
+// get's 30% speed up on second and next runs
+require('v8-compile-cache');
+
 /* eslint no-console:off */
 
 const init = process.argv.includes('--init');

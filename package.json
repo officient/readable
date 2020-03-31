@@ -23,7 +23,8 @@
   },
   "homepage": "https://github.com/willem-delbare/readable#readme",
   "dependencies": {
-    "lodash": "^4.17.15"
+    "lodash": "^4.17.15",
+    "v8-compile-cache": "^2.1.0"
   },
   "devDependencies": {
     "ava": "^3.5.0",
