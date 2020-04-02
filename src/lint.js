@@ -92,20 +92,18 @@ async function lint(config) {
     }),
   );
 
-  const promises = flattenDeep(files).map((fileName) => {
-    return readFile(fileName, 'utf8').then((result) => {
-      const tokens = tokenize(result);
-      if (tokens === false) {
-        errors.report(fileName, 'Cant parse file');
-        return;
-      }
-      rules.file.forEach(
-        (rule) => rule.module.check(rule.config, tokens, (message, token) => {
-          errors.report(fileName, rule.name, message, token);
-        }),
-      );
-    });
-  });
+  const promises = flattenDeep(files).map((fileName) => readFile(fileName, 'utf8').then((result) => {
+    const tokens = tokenize(result);
+    if (tokens === false) {
+      errors.report(fileName, 'Cant parse file');
+      return;
+    }
+    rules.file.forEach(
+      (rule) => rule.module.check(rule.config, tokens, (message, token) => {
+        errors.report(fileName, rule.name, message, token);
+      }),
+    );
+  }));
 
   return Promise.allSettled(promises).then(() => errors);
 }
