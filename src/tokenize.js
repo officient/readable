@@ -86,21 +86,24 @@ class Tokens {
    * Steps to next occutance of strings
    *
    * @param  {(string|string[])}
+   * @param  {tockensCallback} callback callback for each step
    * @return {this}
    */
-  stepTo(strings) {
+  stepTo(strings, callback) {
     do {
       this.step();
+      this.call(callback);
     } while (!(this.matches(strings) || this.type() === types.eof));
     return this;
   }
 
   /**
    * Steps to correct closing brace
+   * @param  {tockensCallback} callback callback for each step
    *
    * @return {this}
    */
-  stepToClosing() {
+  stepToClosing(callback) {
     const pairs = { '{': '}', '[': ']', '(': ')' };
     const open = this.body();
     if (!(open in pairs)) {
@@ -121,6 +124,7 @@ class Tokens {
         // reached end of file
         break;
       }
+      this.call(callback);
     }
 
     return this;
@@ -150,6 +154,18 @@ class Tokens {
     }
 
     return this.array[this.pos];
+  }
+
+  /**
+   * Call callback preserving current position;
+   * @param  {tockensCallback} callback
+   */
+  call(callback) {
+    if (callback) {
+      const { pos } = this;
+      callback(this);
+      this.pos = pos;
+    }
   }
 
   forEach(callback) {

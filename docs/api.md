@@ -38,11 +38,12 @@ A module for tokenizing PHP code.
         * [.isCode()](#module_tokenize..Tokens+isCode) ⇒ <code>Boolean</code>
         * [.step([backward], [includeAll])](#module_tokenize..Tokens+step) ⇒ <code>this</code>
         * [.matches(strings)](#module_tokenize..Tokens+matches) ⇒ <code>Boolean</code>
-        * [.stepTo(strings)](#module_tokenize..Tokens+stepTo) ⇒ <code>this</code>
-        * [.stepToClosing()](#module_tokenize..Tokens+stepToClosing) ⇒ <code>this</code>
+        * [.stepTo(strings, callback)](#module_tokenize..Tokens+stepTo) ⇒ <code>this</code>
+        * [.stepToClosing(callback)](#module_tokenize..Tokens+stepToClosing) ⇒ <code>this</code>
         * [.body()](#module_tokenize..Tokens+body) ⇒ <code>string</code>
         * [.type()](#module_tokenize..Tokens+type) ⇒ <code>string</code>
         * [.current()](#module_tokenize..Tokens+current) ⇒ <code>Token</code>
+        * [.call(callback)](#module_tokenize..Tokens+call)
         * [.matchAll(strings, callback)](#module_tokenize..Tokens+matchAll)
     * [~types](#module_tokenize..types) : <code>enum</code>
     * [~Token](#module_tokenize..Token) : <code>object</code>
@@ -59,11 +60,12 @@ Class for navigation over array tokens
     * [.isCode()](#module_tokenize..Tokens+isCode) ⇒ <code>Boolean</code>
     * [.step([backward], [includeAll])](#module_tokenize..Tokens+step) ⇒ <code>this</code>
     * [.matches(strings)](#module_tokenize..Tokens+matches) ⇒ <code>Boolean</code>
-    * [.stepTo(strings)](#module_tokenize..Tokens+stepTo) ⇒ <code>this</code>
-    * [.stepToClosing()](#module_tokenize..Tokens+stepToClosing) ⇒ <code>this</code>
+    * [.stepTo(strings, callback)](#module_tokenize..Tokens+stepTo) ⇒ <code>this</code>
+    * [.stepToClosing(callback)](#module_tokenize..Tokens+stepToClosing) ⇒ <code>this</code>
     * [.body()](#module_tokenize..Tokens+body) ⇒ <code>string</code>
     * [.type()](#module_tokenize..Tokens+type) ⇒ <code>string</code>
     * [.current()](#module_tokenize..Tokens+current) ⇒ <code>Token</code>
+    * [.call(callback)](#module_tokenize..Tokens+call)
     * [.matchAll(strings, callback)](#module_tokenize..Tokens+matchAll)
 
 <a name="module_tokenize..Tokens+isCode"></a>
@@ -98,21 +100,27 @@ or array of strings
 
 <a name="module_tokenize..Tokens+stepTo"></a>
 
-#### tokens.stepTo(strings) ⇒ <code>this</code>
+#### tokens.stepTo(strings, callback) ⇒ <code>this</code>
 Steps to next occutance of strings
 
 **Kind**: instance method of [<code>Tokens</code>](#module_tokenize..Tokens)  
 
-| Param | Type |
-| --- | --- |
-| strings | <code>string</code> \| <code>Array.&lt;string&gt;</code> | 
+| Param | Type | Description |
+| --- | --- | --- |
+| strings | <code>string</code> \| <code>Array.&lt;string&gt;</code> |  |
+| callback | <code>tockensCallback</code> | callback for each step |
 
 <a name="module_tokenize..Tokens+stepToClosing"></a>
 
-#### tokens.stepToClosing() ⇒ <code>this</code>
+#### tokens.stepToClosing(callback) ⇒ <code>this</code>
 Steps to correct closing brace
 
 **Kind**: instance method of [<code>Tokens</code>](#module_tokenize..Tokens)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| callback | <code>tockensCallback</code> | callback for each step |
+
 <a name="module_tokenize..Tokens+body"></a>
 
 #### tokens.body() ⇒ <code>string</code>
@@ -131,6 +139,17 @@ Returns current token type
 Returns current token
 
 **Kind**: instance method of [<code>Tokens</code>](#module_tokenize..Tokens)  
+<a name="module_tokenize..Tokens+call"></a>
+
+#### tokens.call(callback)
+Call callback preserving current position;
+
+**Kind**: instance method of [<code>Tokens</code>](#module_tokenize..Tokens)  
+
+| Param | Type |
+| --- | --- |
+| callback | <code>tockensCallback</code> | 
+
 <a name="module_tokenize..Tokens+matchAll"></a>
 
 #### tokens.matchAll(strings, callback)
@@ -161,7 +180,10 @@ Token types enum.
 | variable | <code>number</code> | <code>3</code> | 
 | other | <code>number</code> | <code>4</code> | 
 | bracket | <code>number</code> | <code>5</code> | 
-| eof | <code>number</code> | <code>6</code> | 
+| operator | <code>number</code> | <code>6</code> | 
+| string | <code>number</code> | <code>7</code> | 
+| number | <code>number</code> | <code>8</code> | 
+| eof | <code>number</code> | <code>9</code> | 
 
 <a name="module_tokenize..Token"></a>
 
