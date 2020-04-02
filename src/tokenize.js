@@ -215,6 +215,11 @@ const variable = new RegExp(`\\$${labelText}`, 'g');
 const operators = /[*+\-%!^&|?><>=@]+/g;
 const separators = /[,;]/g;
 const number = /[0-9][0-9._]*/g;
+// terminators
+const enfOfLine = /[\r\n]/gm;
+const endOfComment = /\*\//gm;
+const enfOfQuote = /[^\\]"/gm;
+const endOfSingleQuote = /[^\\]'/gm;
 
 function readToken(stream) {
   if (stream.eat('\r') || stream.eat('\n')) {
@@ -226,12 +231,12 @@ function readToken(stream) {
   }
 
   if (stream.eat('//') || stream.eat('#')) {
-    stream.eatUntil(/[\r\n]/);
+    stream.eatUntil(enfOfLine);
     return types.comment;
   }
 
   if (stream.eat('/*')) {
-    stream.eatUntil(/\*\//, true);
+    stream.eatUntil(endOfComment, true);
     return types.comment;
   }
 
@@ -248,12 +253,12 @@ function readToken(stream) {
   }
 
   if (stream.eat('"')) {
-    stream.eatUntil(/[^\\]"/, true);
+    stream.eatUntil(enfOfQuote, true);
     return types.string;
   }
 
   if (stream.eat("'")) {
-    stream.eatUntil(/[^\\]'/, true);
+    stream.eatUntil(endOfSingleQuote, true);
     return types.string;
   }
 

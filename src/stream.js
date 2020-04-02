@@ -57,9 +57,9 @@ class Stream {
   }
 
   eatUntil(pattern, include) {
-    const reg = new RegExp(`${pattern.source}`, 'gm');
-    reg.lastIndex = this.pos;
-    const match = reg.exec(this.string);
+    const p = pattern;
+    p.lastIndex = this.pos;
+    const match = p.exec(this.string);
     if ((match === null)) {
       // not found utill end of file
       this.pos = this.string.length;
