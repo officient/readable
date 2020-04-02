@@ -205,21 +205,19 @@ class Tokens {
   }
 }
 
-const space = /\s+/g;
-const nonSpace = /\S+/g;
-const brackets = /[[\]{}()]/g;
-// from official PHP docs
-const labelText = '[a-zA-Z_\\u0080-\\u00ff][a-zA-Z0-9_\\u0080-\\u00ff]*';
-const label = new RegExp(labelText, 'g');
-const variable = new RegExp(`\\$${labelText}`, 'g');
-const operators = /[*+\-%!^&|?><>=@]+/g;
-const separators = /[,;]/g;
-const number = /[0-9][0-9._]*/g;
+const space = /^\s+/;
+const nonSpace = /^\S+/;
+const brackets = /^[[\]{}()]/;
+// from official PHP docs (but without \\u0080-\\u00ff)
+const label = /^[a-zA-Z_\x80-\xff][a-zA-Z0-9_\x80-\xff]*/;
+const operators = /^[*+\-%!^&|?><>=@]+/;
+const separators = /^[,;]/;
+const number = /^[0-9][0-9._]*/;
 // terminators
-const enfOfLine = /[\r\n]/gm;
-const endOfComment = /\*\//gm;
-const enfOfQuote = /[^\\]"/gm;
-const endOfSingleQuote = /[^\\]'/gm;
+const enfOfLine = /[\r\n]/m;
+const endOfComment = /\*\//m;
+const enfOfQuote = /[^\\]"/m;
+const endOfSingleQuote = /[^\\]'/m;
 
 function readToken(stream) {
   if (stream.eat('\r') || stream.eat('\n')) {
@@ -248,7 +246,8 @@ function readToken(stream) {
     return types.label;
   }
 
-  if (stream.eat(variable)) {
+  if (stream.eat('$')) {
+    stream.eat(label);
     return types.variable;
   }
 
@@ -294,11 +293,12 @@ function tokenize(str) {
     if (token.type === false) {
       return false;
     }
-    token.body = stream.current();
+    token.body = stream.current;
 
     tokens.push(token);
     stream.next();
   }
+
   return new Tokens(tokens);
 }
 

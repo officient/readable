@@ -3,37 +3,37 @@
 class Stream {
   constructor(string) {
     this.string = string;
-    this.start = 0;
-    this.pos = 0;
     this.line = 1;
     this.column = 1;
+    this.current = '';
   }
 
   eof() {
-    return (this.start === this.string.length);
+    return (this.string === '');
   }
 
   next() {
     // update counters
-    const lines = this.current().split(/\r?\n/);
+    const lines = this.current.split(/\r?\n/);
     const newLines = lines.length - 1;
     if (newLines > 0) {
       this.line += lines.length - 1;
       this.column = lines[newLines].length + 1;
     } else {
-      this.column += this.pos - this.start;
+      this.column += this.current.length;
     }
 
-    this.start = this.pos;
+    this.current = '';
   }
 
-  current() {
-    return this.string.slice(this.start, this.pos);
+  eatChars(count) {
+    this.current += this.string.substring(0, count);
+    this.string = this.string.substring(count);
   }
 
   eatString(pattern) {
-    if (this.string.startsWith(pattern, this.pos)) {
-      this.pos += pattern.length;
+    if (this.string.startsWith(pattern)) {
+      this.eatChars(pattern.length);
       return true;
     }
 
@@ -45,28 +45,23 @@ class Stream {
       return this.eatString(pattern);
     }
 
-    const p = pattern;
-    p.lastIndex = this.pos;
-    const match = p.exec(this.string);
-    if ((match === null) || (match.index !== this.pos)) {
+    const match = pattern.exec(this.string);
+    if ((match === null) || (match.index !== 0)) {
       return false;
     }
 
-    this.pos += match[0].length;
+    this.eatChars(match[0].length);
     return true;
   }
 
   eatUntil(pattern, include) {
-    const p = pattern;
-    p.lastIndex = this.pos;
-    const match = p.exec(this.string);
+    const match = pattern.exec(this.string);
     if ((match === null)) {
-      // not found utill end of file
-      this.pos = this.string.length;
+      this.eatChars(this.string.length);
     } else {
-      this.pos = match.index;
+      this.eatChars(match.index);
       if (include) {
-        this.pos += match[0].length;
+        this.eatChars(match[0].length);
       }
     }
   }
