@@ -2,7 +2,7 @@
 /* eslint import/no-dynamic-require:off */
 /* eslint global-require:off */
 
-const { readFileSync } = require('fs');
+const { readFile } = require('fs').promises;
 const { flattenDeep } = require('lodash');
 const { dirsTree } = require('./utils.js');
 const { tokenize } = require('./tokenize');
@@ -80,7 +80,7 @@ function loadRules(rulesConfig) {
 
 
 // main lint
-function lint(config) {
+async function lint(config) {
   const rules = loadRules(config.rules);
   const files = dirsTree(config.pathes, '.php');
 
@@ -92,24 +92,22 @@ function lint(config) {
     }),
   );
 
-  // rules with file scope
-  flattenDeep(files).forEach((file) => {
-    let tokens;
-    try {
-      const string = readFileSync(file, 'utf8');
-      tokens = tokenize(string);
-    } catch (err) {
-      errors.report(file, `Cant parse file: ${err.message}`);
-      return;
-    }
-    rules.file.forEach(
-      (rule) => rule.module.check(rule.config, tokens, (message, token) => {
-        errors.report(file, rule.name, message, token);
-      }),
-    );
+  const promises = flattenDeep(files).map((fileName) => {
+    return readFile(fileName, 'utf8').then((result) => {
+      const tokens = tokenize(result);
+      if (tokens === false) {
+        errors.report(fileName, 'Cant parse file');
+        return;
+      }
+      rules.file.forEach(
+        (rule) => rule.module.check(rule.config, tokens, (message, token) => {
+          errors.report(fileName, rule.name, message, token);
+        }),
+      );
+    });
   });
 
-  return errors;
+  return Promise.allSettled(promises).then(() => errors);
 }
 
 module.exports = lint;

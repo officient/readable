@@ -68,11 +68,13 @@ if (init) {
 } else if (saveBaseLine) {
   const fileNameIndex = process.argv.indexOf('--save-base-line') + 1;
   const fileName = process.argv[fileNameIndex] || '.baseline.json';
-  const errors = run(true);
-  const baseline = errors.generateBaseline();
-  const data = JSON.stringify(baseline, null, 2);
-  fs.writeFileSync(fileName, data);
+  run(true).then((errors) => {
+    const baseline = errors.generateBaseline();
+    const data = JSON.stringify(baseline, null, 2);
+    fs.writeFileSync(fileName, data);
+  });
 } else {
-  const errors = run(disableBaseLine);
-  process.exitCode = printErrors(errors.errors);
+  run(disableBaseLine).then((errors) => {
+    process.exitCode = printErrors(errors.errors);
+  });
 }
