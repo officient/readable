@@ -273,7 +273,7 @@ function readToken(stream) {
     return types.other;
   }
 
-  throw new Error(`Error parsing near ${stream.line}:${stream.column}`);
+  return false;
 }
 
 function tokenize(str) {
@@ -286,6 +286,9 @@ function tokenize(str) {
       column: stream.column,
     };
     token.type = readToken(stream);
+    if (token.type === false) {
+      return false;
+    }
     token.body = stream.current();
 
     tokens.push(token);
