@@ -14,6 +14,14 @@ Avoid namespaces with 15+ files
 "namespace-max-files": 15
 ```
 
+### argument-override
+
+Avoid overriding of a function's arguments
+
+```JSON
+"argument-override": true
+```
+
 ### file-max-size
 
 Avoid files with more than 200 lines
@@ -109,5 +117,5 @@ Below is an exhaustive set of the initial rules we need implemented. Each rule s
 - [x] avoid an if statement or for loop without braces
 - [x] avoid variables with names shorter than 3 letters (while whitelisting $i or $id)
 - [x]
-- [ ] avoid overriding of a function's arguments
+- [x] avoid overriding of a function's arguments
 - [x] avoid empty catch blocks

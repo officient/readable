@@ -3,6 +3,7 @@
     "src/"
   ],
   "rules": {
+    "argument-override": true,
     "empty-catch": true,
     "namespace-max-files": 15,
     "file-max-size": 200,
