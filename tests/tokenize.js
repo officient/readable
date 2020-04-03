@@ -41,6 +41,17 @@ test('tokenize string', (t) => {
   t.true(hasToken(tokens, "'single \\' '"));
 });
 
+test('tokenize empty strings', (t) => {
+  const tokens = tokenize(`
+$a = "";
+$a = '';
+`);
+
+  t.true(hasToken(tokens, '""'));
+  t.true(hasToken(tokens, "''"));
+});
+
+
 test('tokenize numbers', (t) => {
   const tokens = tokenize(`
 // yes, this is a valid php numbers in 7.4

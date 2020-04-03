@@ -252,6 +252,10 @@ function readToken(stream) {
     return types.variable;
   }
 
+  if (stream.eat('""') || stream.eat("''")) {
+    return types.string;
+  }
+
   if (stream.eat('"')) {
     stream.eatUntil(enfOfQuote, true);
     return types.string;

@@ -8,7 +8,7 @@
 
 ### namespace-max-files
 
-Avoid namespaces with 15+ files
+Avoid namespaces with 15+ files:
 
 ```JSON
 "namespace-max-files": 15
@@ -16,7 +16,7 @@ Avoid namespaces with 15+ files
 
 ### argument-override
 
-Avoid overriding of a function's arguments
+Avoid overriding of a function's arguments:
 
 ```JSON
 "argument-override": true
@@ -24,7 +24,7 @@ Avoid overriding of a function's arguments
 
 ### file-max-size
 
-Avoid files with more than 200 lines
+Avoid files with more than 200 lines:
 
 ```JSON
 "file-max-size": 200
@@ -40,7 +40,7 @@ Avoid empty catch blocks:
 
 ### class-comment
 
-Avoid a class without a single comment at the top stating purpose
+Avoid a class without a single comment at the top stating purpose:
 
 ```JSON
 "class-comment": true
@@ -48,7 +48,7 @@ Avoid a class without a single comment at the top stating purpose
 
 ### forbidden-functions
 
-Avoid dangerous calls to eval, print_r, var_export, var_dump, phpinfo, exec,..(forbidden function list)
+Avoid dangerous calls to `eval`, `print_r`, `var_export`, `var_dump`, `phpinfo`, `exec`, ... (forbidden function list):
 
 ```JSON
 "forbidden-functions": [
@@ -98,12 +98,29 @@ Avoid function names starting with a certain pattern:
 ```JSON
 "forbidden-function-prefix": ["check"],
 ```
+
 ### if-assigment
 
 Avoid assignment inside of an if statement:
 
 ```JSON
 "if-assigment": true,
+```
+
+### complex-if
+
+Avoid complicated ifs (eg more than 2 `&&`, combination of `&&` and `||`):
+
+```JSON
+"complex-if": true,
+```
+
+### ternary-max-length
+
+Avoid ternary operator combined with line length exceeding 50 chars:
+
+```JSON
+"ternary-max-length": 50,
 ```
 
 ## TODO
@@ -114,7 +131,7 @@ Below is an exhaustive set of the initial rules we need implemented. Each rule s
 - [x] avoid a class without a single comment at the top stating purpose
 - [x] avoid any function longer than 50 lines
 - [ ] avoid indent deeper than 4 (maximum block nesting, eg for loop within an if within a for loop within a for loop)
-- [ ] avoid complicated ifs (eg more than 2 &&.., combination of && and ||)
+- [x] avoid complicated ifs (eg more than 2 &&.., combination of && and ||)
 - [ ] avoid ternary operator combined with line length exceeding 50 chars
 - [x] avoid namespaces with 15+ files
 - [x] avoid loops with inside of them more than 15 lines (a block that should be a function)
