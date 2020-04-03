@@ -1,5 +1,3 @@
-# readable
-
 ![readable](docs/logo.png)
 
 PHP code analyzer, similar to eslint, but with a focus on readability. The idea is to build an analyzer that can guarantee long term code maintainability for a project. The main project values are extendibility, ease of use, speed of analysis and simplicity.
