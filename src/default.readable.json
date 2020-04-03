@@ -5,6 +5,7 @@
   "rules": {
     "argument-override": true,
     "empty-catch": true,
+    "if-assigment": true,
     "namespace-max-files": 15,
     "file-max-size": 200,
     "loop-max-size": 15,

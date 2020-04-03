@@ -98,6 +98,13 @@ Avoid function names starting with a certain pattern:
 ```JSON
 "forbidden-function-prefix": ["check"],
 ```
+### if-assigment
+
+Avoid assignment inside of an if statement:
+
+```JSON
+"if-assigment": true,
+```
 
 ## TODO
 
@@ -113,7 +120,7 @@ Below is an exhaustive set of the initial rules we need implemented. Each rule s
 - [x] avoid loops with inside of them more than 15 lines (a block that should be a function)
 - [x] avoid files with more than 200 lines.
 - [x] avoid dangerous calls to eval, print_r, var_export, var_dump, phpinfo, exec,..(forbidden function list)
-- [ ] avoid assignment inside of an if statement
+- [x] avoid assignment inside of an if statement
 - [x] avoid an if statement or for loop without braces
 - [x] avoid variables with names shorter than 3 letters (while whitelisting $i or $id)
 - [x]
