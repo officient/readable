@@ -108,6 +108,7 @@ class Tokens {
     const open = this.body();
     if (!(open in pairs)) {
       // do nothing if not brace
+      this.call(callback);
       return this;
     }
     const close = pairs[open];

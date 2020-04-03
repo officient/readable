@@ -10,6 +10,7 @@
     "namespace-max-files": 15,
     "file-max-size": 200,
     "loop-max-size": 15,
+    "loop-max-nest": 2,
     "ternary-max-length": 50,
     "function-max-size": 50,
     "class-comment": true,

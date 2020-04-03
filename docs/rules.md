@@ -123,16 +123,24 @@ Avoid ternary operator combined with line length exceeding 50 chars:
 "ternary-max-length": 50,
 ```
 
+### loop-max-nest
+
+Avoid triple inner for/foreach (eg for within for within for loop):
+
+```JSON
+"loop-max-nest": 2,
+```
+
 ## TODO
 
 Below is an exhaustive set of the initial rules we need implemented. Each rule should have it's own 'class/module' and act as a plugin for the wider system:
 
-- [ ] avoid triple inner for/foreach (eg for within for within for loop)
+- [x] avoid triple inner for/foreach (eg for within for within for loop)
 - [x] avoid a class without a single comment at the top stating purpose
 - [x] avoid any function longer than 50 lines
 - [ ] avoid indent deeper than 4 (maximum block nesting, eg for loop within an if within a for loop within a for loop)
 - [x] avoid complicated ifs (eg more than 2 &&.., combination of && and ||)
-- [ ] avoid ternary operator combined with line length exceeding 50 chars
+- [x] avoid ternary operator combined with line length exceeding 50 chars
 - [x] avoid namespaces with 15+ files
 - [x] avoid loops with inside of them more than 15 lines (a block that should be a function)
 - [x] avoid files with more than 200 lines.
