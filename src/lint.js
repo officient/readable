@@ -4,6 +4,7 @@
 
 const { readFile } = require('fs').promises;
 const { flattenDeep } = require('lodash');
+const allSettled = require('promise.allsettled');
 const { dirsTree } = require('./utils.js');
 const { tokenize } = require('./tokenize');
 const Errors = require('./errors');
@@ -105,7 +106,7 @@ async function lint(config) {
     );
   }));
 
-  return Promise.allSettled(promises).then(() => errors);
+  return allSettled(promises).then(() => errors);
 }
 
 module.exports = lint;

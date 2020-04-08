@@ -32,6 +32,7 @@
   "homepage": "https://github.com/willem-delbare/readable#readme",
   "dependencies": {
     "lodash": "^4.17.15",
+    "promise.allsettled": "^1.0.2",
     "v8-compile-cache": "^2.1.0"
   },
   "devDependencies": {
