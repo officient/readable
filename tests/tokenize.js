@@ -96,3 +96,14 @@ test('tokenize steps to close', (t) => {
   const closed = tokens.stepToClosing();
   t.is(closed.current().column, 7);
 });
+
+test('tokenize :: ', (t) => {
+  const src = `
+if($i == Auth::getUser())
+{
+  throw new Exception("null");
+}
+  `;
+  const tokens = tokenize(src);
+  t.true(hasToken(tokens, '::'));
+});

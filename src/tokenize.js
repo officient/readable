@@ -212,8 +212,7 @@ const brackets = /[[\]{}()]/g;
 // from official PHP docs
 const labelText = '[a-zA-Z_\\u0080-\\u00ff][a-zA-Z0-9_\\u0080-\\u00ff]*';
 const label = new RegExp(labelText, 'g');
-const variable = new RegExp(`\\$${labelText}`, 'g');
-const operators = /[*+\-%!^&|?><>=@]+/g;
+const operators = /[*+\-%!^&|?><>=@:]+/g;
 const separators = /[,;]/g;
 const number = /[0-9][0-9._]*/g;
 // terminators
@@ -249,7 +248,8 @@ function readToken(stream) {
     return types.label;
   }
 
-  if (stream.eat(variable)) {
+  if (stream.eat('$')) {
+    stream.eat(label);
     return types.variable;
   }
 
