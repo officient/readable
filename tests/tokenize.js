@@ -35,10 +35,12 @@ test('tokenize string', (t) => {
   const tokens = tokenize(`
 "double \\" ";
 'single \\' ';
+"\\\\";
 `);
 
   t.true(hasToken(tokens, '"double \\" "'));
   t.true(hasToken(tokens, "'single \\' '"));
+  t.true(hasToken(tokens, '"\\\\"'));
 });
 
 test('tokenize empty strings', (t) => {

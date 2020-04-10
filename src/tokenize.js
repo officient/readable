@@ -217,8 +217,8 @@ const number = /[0-9][0-9._]*/g;
 // terminators
 const enfOfLine = /[\r\n]/gm;
 const endOfComment = /\*\//gm;
-const enfOfQuote = /[^\\]"/gm;
-const endOfSingleQuote = /[^\\]'/gm;
+const enfOfQuote = /((\\\\|[^\\])")/gm;
+const endOfSingleQuote = /((\\\\|[^\\])')/gm;
 
 function readToken(stream) {
   if (stream.eat('\r') || stream.eat('\n')) {
