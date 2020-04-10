@@ -1,7 +1,13 @@
-const loops = ['for', 'foreach'];
+const loops = ['for', 'foreach', 'do', 'while'];
 
 function check(maxNest, token, report, depth) {
-  const end = token.copy().step().stepToClosing(); // skip ()
+  const end = token.copy().step();
+  if (end.body() === '(') { // skip () if present
+    end.stepToClosing().step();
+  }
+  if (end.body() === ';') { // do {} while ();
+    return;
+  }
   end.step().stepToClosing((inner) => {
     if (inner.matches(loops)) {
       if (depth === maxNest) {

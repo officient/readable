@@ -13,6 +13,20 @@ foreach ($arr as $key => $value) {
 }
 `;
 
+const invalid = `
+<?php
+
+do {
+    while ($i <= 10) {
+        foreach ($arr as $key => $value) {
+            echo $i;
+        }
+    }
+} while ($i > 0);
+
+`;
+
+
 ruleTest('loop-max-nest', rule, {
   valid: [
     {
@@ -25,6 +39,10 @@ ruleTest('loop-max-nest', rule, {
       src,
       config: 2,
       messageIncludes: 'are nested more',
+    },
+    {
+      src: invalid,
+      config: 2,
     },
   ],
 });
