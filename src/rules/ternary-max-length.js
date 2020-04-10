@@ -10,8 +10,9 @@ module.exports = {
         }
       });
 
-      if (isTernary && (lineEnd.current().column > maxLength)) {
-        report(`Line with ternaty longer than ${maxLength} []`, token.current());
+      const length = lineEnd.current().column;
+      if (isTernary && (length > maxLength)) {
+        report(`Line with ternaty longer than ${maxLength} [${length}]`, token.current());
       }
     });
   },
