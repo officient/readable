@@ -24,6 +24,21 @@ function some($one, $two)
 }
 `;
 
+const invalid3 = `
+function some($one, $two)
+{
+    ++$one;
+}
+`;
+
+
+const invalid4 = `
+function some($one, $two)
+{
+    $one += 1;
+}
+`;
+
 ruleTest('argument-override', rule, {
   valid: [
     { src },
@@ -33,9 +48,8 @@ ruleTest('argument-override', rule, {
       src: invalid1,
       messageIncludes: 'Overriding of a function\'s argument',
     },
-    {
-      src: invalid2,
-      messageIncludes: 'Overriding of a function\'s argument',
-    },
+    { src: invalid2 },
+    { src: invalid3 },
+    { src: invalid4 },
   ],
 });

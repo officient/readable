@@ -1,3 +1,6 @@
+const increments = ['++', '--'];
+const assigment = ['=', '+=', '-=', '*=', '/=', '%=', '.='];
+
 module.exports = {
   check(options, tokens, report) {
     tokens.matchAll('function', (token) => {
@@ -11,10 +14,18 @@ module.exports = {
       // search for args in function body
       token.step().stepToClosing((argToken) => {
         if (argToken.matches(args)) {
+          const rep = (arg, t) => {
+            report(`Overriding of a function's argument ${arg}.`, t.current());
+          };
           const arg = argToken.body();
+          const prev = argToken.copy().step(true);
+          if (prev.matches(increments)) {
+            rep(arg, prev);
+          }
+
           argToken.stepTo(';', (t3) => {
-            if (t3.matches('=')) {
-              report(`Overriding of a function's argument ${arg}.`, t3.current());
+            if (t3.matches(increments) || t3.matches(assigment)) {
+              rep(arg, t3);
             }
           });
         }
