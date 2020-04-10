@@ -20,7 +20,9 @@ function ruleTest(name, rule, tests) {
     const tokens = tokenize(test.src);
     ava.cb(`${name} reports [${i + 1}]`, (t) => {
       rule.check(test.config, tokens, (message) => {
-        t.true(message.includes(test.messageIncludes));
+        if (test.messageIncludes) {
+          t.true(message.includes(test.messageIncludes));
+        }
         t.end();
       });
     });
