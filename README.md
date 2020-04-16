@@ -22,7 +22,7 @@ After that, you can run readable on any file or directory like this:
 
 ### Exit code
 
-Returns 0 if no errors. Returns 2 if there are some rrors. Can return 2 if some
+Returns 0 if no errors. Returns 1 if there are some errors. Can return 2 if some
 exception happend during linting.
 
 ### Configuration
