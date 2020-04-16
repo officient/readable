@@ -109,3 +109,12 @@ if($i == Auth::getUser())
   const tokens = tokenize(src);
   t.true(hasToken(tokens, '::'));
 });
+
+
+test('tokenize dot operator ', (t) => {
+  const src = `
+  $msg = $mwg."some";
+  `;
+  const tokens = tokenize(src);
+  t.true(hasToken(tokens, '.'));
+});
