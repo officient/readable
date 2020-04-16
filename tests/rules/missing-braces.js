@@ -8,6 +8,12 @@ const valid = `
 foreach ($arr as $key => $value) {
     print_r($arr);
 }
+
+if ($a == 1) {
+    do();
+} else if ($b == 1) {
+    do();
+};
 `;
 
 const invalid = `
