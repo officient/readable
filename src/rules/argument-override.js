@@ -22,7 +22,10 @@ module.exports = {
           if (prev.matches(increments)) {
             rep(arg, prev);
           }
-
+          // check if token in beginning of statement
+          if (!prev.matches(['{', ';', ')'])) {
+            return;
+          }
           argToken.stepTo(';', (t3) => {
             if (t3.matches(increments) || t3.matches(assigment)) {
               rep(arg, t3);

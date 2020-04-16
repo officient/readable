@@ -7,6 +7,9 @@ const src = `
 function some($one, $two)
 {
     other($one);
+    if ($one) {
+        $other = 0;
+    }
 }
 `;
 
