@@ -210,7 +210,7 @@ const space = /\s+/g;
 const nonSpace = /\S+/g;
 const brackets = /[[\]{}()]/g;
 // from official PHP docs
-const label = /[a-zA-Z_\u0080-\u00ff][a-zA-Z0-9_\u0080-\u00ff]*/g;
+const label = /[a-zA-Z_\u0080-\u00ff\\][a-zA-Z0-9_\u0080-\u00ff\\]*/g;
 const operators = /[.*+\-%!^&|?><>=@:]+/g;
 const separators = /[,;]/g;
 const number = /[0-9][0-9._]*/g;

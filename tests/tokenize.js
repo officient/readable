@@ -87,6 +87,11 @@ test('tokenize detects variables', (t) => {
   t.true(hasToken(tokens, '$var'));
 });
 
+test('tokenize detects namespaces', (t) => {
+  const tokens = tokenize('$a = \\b\\c::d();');
+  t.true(hasToken(tokens, '\\b\\c'));
+});
+
 test('tokenize steps to', (t) => {
   const tokens = tokenize('one(); next(); last();');
 
