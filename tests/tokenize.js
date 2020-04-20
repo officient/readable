@@ -69,12 +69,15 @@ test('tokenize operators', (t) => {
   const tokens = tokenize(`
 if( !isset($city['id']))
 {
-  for($i = 2005; $i <= $year_end;$i++){}
+  for($i = 2005; $i <= $year_end;$i++){
+      $a=$b/$c;
+  }
 }`);
 
   t.true(hasToken(tokens, 'isset'));
   t.true(hasToken(tokens, '!'));
   t.true(hasToken(tokens, ';'));
+  t.true(hasToken(tokens, '/'));
 });
 
 test('tokenize detects function calls', (t) => {
