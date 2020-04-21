@@ -11,4 +11,9 @@ jobs:
     - name: Eslint
       run: npm run lint
     - name: Jest
-      run: npm run test
+      run: npm run test:ci
+    - name: Codecov
+      env:
+        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+      run:
+        curl -s https://codecov.io/bash | bash -s -- -t $CODECOV_TOKEN

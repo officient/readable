@@ -10,6 +10,7 @@
     "lint": "eslint bin/ src/ tests/",
     "fix": "eslint --fix bin/ src/ tests/",
     "test": "ava",
+    "test:ci": "nyc ava",
     "docs": "jsdoc2md src/*.js > docs/api.md"
   },
   "files": [
@@ -40,6 +41,7 @@
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.1.0",
     "eslint-plugin-import": "^2.20.1",
-    "jsdoc-to-markdown": "^5.0.3"
+    "jsdoc-to-markdown": "^5.0.3",
+    "nyc": "^15.0.1"
   }
 }
