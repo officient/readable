@@ -4,6 +4,10 @@ PHP code analyzer, similar to eslint, but with a focus on readability. The idea 
 
 quick links: [Rules and default configuration](docs/rules.md)
 
+[![codecov](https://codecov.io/gh/officient/readable/branch/master/graph/badge.svg)](https://codecov.io/gh/officient/readable)
+
+![Tests](https://github.com/officient/readable/workflows/Tests/badge.svg)
+
 ### Installation and Usage
 
 You can install readable using npm:
