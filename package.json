@@ -11,6 +11,7 @@
     "fix": "eslint --fix bin/ src/ tests/",
     "test": "ava",
     "test:ci": "nyc ava",
+    "test:ci:report": "nyc report --reporter=lcov",
     "docs": "jsdoc2md src/*.js > docs/api.md"
   },
   "files": [
