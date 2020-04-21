@@ -1,0 +1,14 @@
+name: Tests
+on: push
+jobs:
+  test:
+    name: test
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Dependencies
+      run: npm i
+    - name: Eslint
+      run: npm run lint
+    - name: Jest
+      run: npm run test
