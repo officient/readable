@@ -6,6 +6,6 @@
     "lint": "readable"
   },
   "devDependencies": {
-    "readable": "willem-delbare/readable#master"
+    "readable": "officient/readable#master"
   }
 }
