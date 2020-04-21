@@ -12,6 +12,8 @@ jobs:
       run: npm run lint
     - name: Jest
       run: npm run test:ci
+    - name: Jest
+      run: npm run test:ci:report
     - name: Codecov
       env:
         CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
