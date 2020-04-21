@@ -65,7 +65,7 @@ with `--disable-base-line` flag:
 ## Rules
 
 See [Rules and default configuration](docs/rules.md) for default rules.
-Or read [how to create custom rule](docs/add-rule.md).
+Or read [how to create a custom rule](docs/add-rule.md).
 
 ### Development
 
