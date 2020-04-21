@@ -1,10 +1,12 @@
 # Rules and default configuration
 
-## disable rule
+## How to disable a specific rule?
 
 ```JSON
 "namespace-max-files": false,
 ```
+
+## List of rules:
 
 ### namespace-max-files
 
