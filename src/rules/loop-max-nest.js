@@ -8,7 +8,7 @@ function check(maxNest, token, report, depth) {
   if (end.body() === ';') { // do {} while ();
     return;
   }
-  end.step().stepToClosing((inner) => {
+  end.stepToClosing((inner) => {
     if (inner.matches(loops)) {
       if (depth === maxNest) {
         report(`Loop are nested more than ${maxNest} [${depth + 1}].`, inner.current());

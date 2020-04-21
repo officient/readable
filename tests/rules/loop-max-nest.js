@@ -5,6 +5,7 @@ const src = `
 <?php
 
 foreach ($arr as $key => $value) {
+    echo $key;
     for ($i = 1; $i <= 10; $i++) {
         foreach ($arr as $key => $value) {
             echo $i;
