@@ -10,7 +10,7 @@
     "lint": "eslint bin/ src/ tests/",
     "fix": "eslint --fix bin/ src/ tests/",
     "test": "ava",
-    "test:ci": "nyc ava",
+    "test:ci": "nyc --all --include 'src/**' ava",
     "test:ci:report": "nyc report --reporter=lcov",
     "docs": "jsdoc2md src/*.js > docs/api.md"
   },
