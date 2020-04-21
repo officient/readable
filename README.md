@@ -30,7 +30,7 @@ You can also add it to your NPM scripts:
 },
 ```
 
-     $ npm run readable
+     $ npm run test
 
 ### Exit code
 
