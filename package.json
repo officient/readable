@@ -22,14 +22,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/willem-delbare/readable.git"
+    "url": "git+https://github.com/officient/readable.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/willem-delbare/readable/issues"
+    "url": "https://github.com/officient/readable/issues"
   },
-  "homepage": "https://github.com/willem-delbare/readable#readme",
+  "homepage": "https://github.com/officient/readable#readme",
   "dependencies": {
     "lodash": "^4.17.15",
     "promise.allsettled": "^1.0.2",
