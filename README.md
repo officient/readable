@@ -2,6 +2,8 @@
 
 PHP code analyzer, similar to eslint, but with a focus on readability. The idea is to build an analyzer that can guarantee long term code maintainability for a project. The main project values are extendibility, ease of use, speed of analysis and simplicity.
 
+quick links: [Rules and default configuration](docs/rules.md)
+
 ### Installation and Usage
 
 You can install readable using npm:
