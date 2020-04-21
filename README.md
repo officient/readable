@@ -6,11 +6,11 @@ PHP code analyzer, similar to eslint, but with a focus on readability. The idea 
 
 You can install readable using npm:
 
-    $ npm install willem-delbare/readable#master --save-dev
+    $ npm install officient/readable#master --save-dev
 
 While developing you can update to latest master with
 
-    $ npm uninstall readable && npm install willem-delbare/readable#master
+    $ npm uninstall readable && npm install officient/readable#master
 
 You should then set up a configuration file:
 
