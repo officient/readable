@@ -12,11 +12,7 @@ quick links: [Rules and default configuration](docs/rules.md)
 
 You can install readable using npm:
 
-    $ npm install officient/readable#master --save-dev
-
-While developing you can update to latest master with
-
-    $ npm uninstall readable && npm install officient/readable#master
+    $ npm install @officient/readable --save-dev
 
 You should then set up a configuration file:
 
@@ -25,6 +21,16 @@ You should then set up a configuration file:
 After that, you can run readable on any file or directory like this:
 
     $ npx readable
+
+You can also add it to your NPM scripts:
+
+```json
+"scripts": {
+    "test": "readable"
+},
+```
+
+     $ npm run readable
 
 ### Exit code
 
@@ -89,4 +95,6 @@ To update api docs:
 
     npm run docs
 
+While developing you can update to latest master with
 
+    $ npm install @officient/readable@latest
