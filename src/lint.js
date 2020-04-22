@@ -83,7 +83,7 @@ function loadRules(rulesConfig) {
 // main lint
 async function lint(config) {
   const rules = loadRules(config.rules);
-  const files = dirsTree(config.pathes, '.php');
+  const files = dirsTree(config.paths, '.php');
 
   const errors = new Errors(config.baseline);
   // rules with namespace scope

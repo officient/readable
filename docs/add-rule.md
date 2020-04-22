@@ -7,7 +7,7 @@ new rule:
 
 ```JSON
 {
-  "pathes": [
+  "paths": [
     "src/"
   ],
   "rules": {

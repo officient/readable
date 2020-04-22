@@ -1,12 +1,13 @@
 {
   "baseline": ".baseline.json",
-  "pathes": [
+  "paths": [
     "src/"
   ],
   "rules": {
     "empty-catch": true,
     "namespace-max-files": 2,
     "file-max-size": 200,
+    "loop-max-nest": 1,
     "class-comment": true,
     "forbidden-function-prefix": ["check"],
     "forbidden-functions": [

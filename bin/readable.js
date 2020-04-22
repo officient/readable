@@ -39,12 +39,12 @@ function run(ignore) {
 }
 
 function printErrors(errors) {
-  const pathes = Object.keys(errors);
-  if (pathes.length === 0) {
+  const paths = Object.keys(errors);
+  if (paths.length === 0) {
     return 0;
   }
 
-  pathes.forEach((path) => {
+  paths.forEach((path) => {
     console.error(path);
     Object.keys(errors[path]).forEach((rule) => {
       Object.keys(errors[path][rule]).forEach((message) => {

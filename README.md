@@ -43,7 +43,7 @@ After running `readable --init`, you'll have a `.readable.json` file in your dir
 
 ```JSON
 {
-  "pathes": [
+  "paths": [
     "src/"
   ],
   "rules": {}
@@ -60,7 +60,7 @@ Add `"baseline"` param to your `.readable.json`:
 ```JSON
 {
   "baseline": ".baseline.json",
-  "pathes": [
+  "paths": [
     "src/"
   ],
   "rules": {}
