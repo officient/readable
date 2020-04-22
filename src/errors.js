@@ -1,3 +1,8 @@
+function normalisePath(path) {
+  return path.replace(/\\/g, '/');
+}
+
+
 // gather errors by path and message
 class Errors {
   constructor(baseline) {
@@ -6,19 +11,23 @@ class Errors {
   }
 
   isBaselined(path, rule) {
-    if (!(path in this.baseline)) {
-      return false;
-    }
-    if (!(rule in this.baseline[path])) {
+    // errors report pathes OS dependent
+    // baseline stores unix-style baseline
+    const normalPath = normalisePath(path);
+    if (!(normalPath in this.baseline)) {
       return false;
     }
 
-    const left = this.baseline[path][rule];
+    if (!(rule in this.baseline[normalPath])) {
+      return false;
+    }
+
+    const left = this.baseline[normalPath][rule];
     if (left === 0) {
       return false;
     }
 
-    this.baseline[path][rule] = left - 1;
+    this.baseline[normalPath][rule] = left - 1;
     return true;
   }
 
@@ -42,12 +51,13 @@ class Errors {
   generateBaseline() {
     const baseline = {};
     Object.keys(this.errors).forEach((path) => {
-      baseline[path] = {};
+      const normalPath = normalisePath(path);
+      baseline[normalPath] = {};
       Object.keys(this.errors[path]).forEach((r) => {
         const rule = this.errors[path][r];
         const messages = Object.keys(rule);
         const count = messages.reduce((acc, msg) => acc + rule[msg].length, 0);
-        baseline[path][r] = count;
+        baseline[normalPath][r] = count;
       });
     });
 
