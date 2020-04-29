@@ -3,7 +3,11 @@ const utils = require('../src/utils');
 
 
 test('build dir tree', (t) => {
-  t.deepEqual(utils.dirsTree(['./tests/fixtures/files/'], '.php'), [
+  const dirs = [
+    './tests/fixtures/files/',
+    '!./tests/fixtures/files/ignore/',
+  ];
+  t.deepEqual(utils.dirsTree(dirs, '.php'), [
     [
       'tests/fixtures/files/1.php',
       [

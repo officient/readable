@@ -44,11 +44,15 @@ After running `readable --init`, you'll have a `.readable.json` file in your dir
 ```JSON
 {
   "paths": [
-    "src/"
+    "src/",
+    "!src/vendor/"
   ],
   "rules": {}
 }
 ```
+
+Start a path with `!` to ignore the folder.
+
 ## Baseline
 
 Create baseline file:

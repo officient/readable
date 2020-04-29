@@ -5,11 +5,15 @@ function normalisePath(path) {
   return path.replace(/\\/g, '/');
 }
 
-function walkDir(dir, ext) {
+function walkDir(dir, ext, exclude) {
   const filesTree = fs.readdirSync(dir).map((file) => {
     const path = join(dir, file);
+    if (exclude.includes(normalisePath(path))) {
+      // we will filter it out on line 22
+      return 'Exclude';
+    }
     if (fs.statSync(path).isDirectory()) {
-      return walkDir(join(path, ''), ext);
+      return walkDir(join(path, ''), ext, exclude);
     }
     return path;
   });
@@ -20,7 +24,16 @@ function walkDir(dir, ext) {
 
 // list files recursivelly (filter by extension)
 function dirsTree(dirs, ext) {
-  return dirs.map((d) => walkDir(d, ext));
+  const exclude = [];
+  const include = dirs.filter((d) => {
+    if (d.startsWith('!')) {
+      const path = d.slice(1).replace(/\/$/, '');
+      exclude.push(join(path));
+      return false;
+    }
+    return true;
+  });
+  return include.map((d) => walkDir(d, ext, exclude));
 }
 
 // stringify keeping order
@@ -36,5 +49,5 @@ function stringify(obj) {
 module.exports = {
   dirsTree,
   stringify,
-  normalisePath
+  normalisePath,
 };
