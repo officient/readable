@@ -17,6 +17,7 @@ const disableBaseLine = process.argv.includes('--disable-base-line');
 const fs = require('fs');
 const configLoader = require('../src/config-loader');
 const lint = require('../src/lint');
+const { stringify } = require('../src/utils');
 
 process.on('uncaughtException', (err) => {
   // TODO: check why it catches not all exceptions
@@ -70,7 +71,7 @@ if (init) {
   const fileName = process.argv[fileNameIndex] || '.baseline.json';
   run(true).then((errors) => {
     const baseline = errors.generateBaseline();
-    const data = JSON.stringify(baseline, null, 2);
+    const data = stringify(baseline);
     fs.writeFileSync(fileName, data);
   });
 } else {
