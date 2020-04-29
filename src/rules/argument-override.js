@@ -3,11 +3,16 @@ const assigment = ['=', '+=', '-=', '*=', '/=', '%=', '.='];
 
 module.exports = {
   check(options, tokens, report) {
+    const allowKey = 'allow-pass-by-reference';
+    const allowReference = (options && allowKey in options) ? options[allowKey] : false;
     tokens.matchAll('function', (token) => {
       const args = [];
       // extract args from ()
       token.step().step().stepToClosing((t1) => {
         if (t1.body().startsWith('$')) {
+          if (allowReference && t1.copy().step(true).matches('&')) {
+            return;
+          }
           args.push(t1.body());
         }
       });

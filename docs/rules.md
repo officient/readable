@@ -21,7 +21,9 @@ Avoid namespaces with 15+ files:
 Avoid overriding of a function's arguments:
 
 ```JSON
-"argument-override": true
+"argument-override": {
+  "allow-pass-by-reference": true,
+},
 ```
 
 ### file-max-size

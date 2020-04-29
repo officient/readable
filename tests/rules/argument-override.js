@@ -13,6 +13,14 @@ function some($one, $two)
 }
 `;
 
+
+const valid = `
+function some(&$one)
+{
+    $one += 1;
+}
+`;
+
 const invalid1 = `
 function some($one, $two)
 {
@@ -45,6 +53,12 @@ function some($one, $two)
 ruleTest('argument-override', rule, {
   valid: [
     { src },
+    {
+      src: valid,
+      config: {
+        'allow-pass-by-reference': true,
+      },
+    },
   ],
   invalid: [
     {

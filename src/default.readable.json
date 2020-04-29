@@ -3,7 +3,6 @@
     "src/"
   ],
   "rules": {
-    "argument-override": true,
     "empty-catch": true,
     "if-assigment": true,
     "complex-if": true,
@@ -17,6 +16,9 @@
     "class-comment": true,
     "missing-braces": true,
     "forbidden-function-prefix": ["check"],
+    "argument-override": {
+      "allow-pass-by-reference": true,
+    },
     "forbidden-functions": [
       "eval", "print_r", "var_export", "var_dump", "phpinfo", "exec"
     ],
