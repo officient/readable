@@ -6,7 +6,7 @@ quick links: [Rules and default configuration](docs/rules.md)
 
 [![codecov](https://codecov.io/gh/officient/readable/branch/master/graph/badge.svg)](https://codecov.io/gh/officient/readable)
 
-![Tests](https://github.com/officient/readable/workflows/Tests/badge.svg)
+[![Codeship Status for officient/readable](https://app.codeship.com/projects/4fd4eea0-676f-0138-8ef4-52f6c3762b41/status?branch=master)](https://app.codeship.com/projects/393877)
 
 ### Installation and Usage
 
