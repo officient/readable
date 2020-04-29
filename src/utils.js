@@ -1,6 +1,10 @@
 const fs = require('fs');
 const { join, extname } = require('path');
 
+function normalisePath(path) {
+  return path.replace(/\\/g, '/');
+}
+
 function walkDir(dir, ext) {
   const filesTree = fs.readdirSync(dir).map((file) => {
     const path = join(dir, file);
@@ -32,4 +36,5 @@ function stringify(obj) {
 module.exports = {
   dirsTree,
   stringify,
+  normalisePath
 };

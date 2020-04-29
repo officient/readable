@@ -1,7 +1,4 @@
-function normalisePath(path) {
-  return path.replace(/\\/g, '/');
-}
-
+const { normalisePath } = require('./utils');
 
 // gather errors by path and message
 class Errors {
