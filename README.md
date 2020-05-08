@@ -14,6 +14,10 @@ You can install readable using npm:
 
     $ npm install @officient/readable --save-dev
 
+You can get the help on useage:
+
+    $ npx readable --help
+
 You should then set up a configuration file:
 
     $ npx readable --init
@@ -34,8 +38,14 @@ You can also add it to your NPM scripts:
 
 ### Exit code
 
-Returns 0 if no errors. Returns 1 if there are some errors. Can return 2 if some
-exception happend during linting.
+<dl>
+  <dt>0</dt>
+  <dd>No errors</dd>
+  <dt>1</dt>
+  <dd>Found errors</dd>
+  <dt>2</dt>
+  <dd>Unexpected behaviour</dd>
+</dl>
 
 ### Configuration
 
@@ -55,24 +65,25 @@ Start a path with `!` to ignore the folder.
 
 ## Baseline
 
-Create baseline file:
+If you have a bunch of errors and you don't want to fix them all
+at once, readable can ignore errors in existing code, while
+ensuring that new code doesn't have errors:
 
     $ npx readable --save-base-line .baseline.json
 
-Add `"baseline"` param to your `.readable.json`:
+will generate or update `.baseline.json` file containing the
+current errors. Add `"baseline"` param to your `.readable.json:`
 
 ```JSON
 {
   "baseline": ".baseline.json",
-  "paths": [
-    "src/"
-  ],
-  "rules": {}
+  ...
 }
 ```
 
-Now errors from baseline file would be ignored. If you want to see all errors run
-with `--disable-base-line` flag:
+You can commit the changes so that readable running in other
+places (e.g. CI) won't complain about those errors. If you want
+to see all errors run with `--disable-base-line` flag:
 
     $ npx readable --disable-base-line
 
@@ -89,15 +100,15 @@ To lint code run:
 
 To fix lint:
 
-    npm run fix
+    $ npm run fix
 
 To test:
 
-    npm run test
+    $ npm run test
 
 To update api docs:
 
-    npm run docs
+    $ npm run docs
 
 While developing you can update to latest master with
 
