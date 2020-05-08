@@ -77,7 +77,7 @@ current errors. Add `"baseline"` param to your `.readable.json:`
 ```JSON
 {
   "baseline": ".baseline.json",
-  ...
+  "..."
 }
 ```
 
