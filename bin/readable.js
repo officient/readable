@@ -11,10 +11,12 @@ require('v8-compile-cache');
 /* eslint no-console:off */
 
 const init = process.argv.includes('--init');
+const help = process.argv.includes('--help');
 const saveBaseLine = process.argv.includes('--save-base-line');
 const disableBaseLine = process.argv.includes('--disable-base-line');
 
 const fs = require('fs');
+const helpMsg = require('../src/help');
 const configLoader = require('../src/config-loader');
 const lint = require('../src/lint');
 const { stringify } = require('../src/utils');
@@ -63,7 +65,9 @@ function printErrors(errors) {
   return 1;
 }
 
-if (init) {
+if (help) {
+  console.log(helpMsg);
+} else if (init) {
   configLoader.init();
   console.info(`Created default config in ${configLoader.fileName}`);
 } else if (saveBaseLine) {
