@@ -20,7 +20,7 @@ BASELINE
 
         npx readable --save-base-line .baseline.json
 
-                will generate or update ${reset}.baseline.json${main} file containing the
+                ${main}will generate or update ${reset}.baseline.json${main} file containing the
                 current errors. Add ${reset}"baseline"${main} param to your ${reset}.readable.json${main}:${reset}
 
         {
