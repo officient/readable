@@ -31,7 +31,11 @@ Avoid overriding of a function's arguments:
 Avoid files with more than 200 lines:
 
 ```JSON
-"file-max-size": 200
+"file-max-size": {
+  "max-lines": 200,
+  "include-comments": true,
+  "include-empty-lines": true
+},
 ```
 
 ### empty-catch
