@@ -1,7 +1,7 @@
 {
   "name": "@officient/readable",
   "private": false,
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "PHP code linter",
   "bin": {
     "readable": "./bin/readable.js"
