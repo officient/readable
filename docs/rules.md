@@ -139,7 +139,7 @@ Avoid triple inner for/foreach (eg for within for within for loop):
 "loop-max-nest": 2,
 ```
 
-### loop-max-nest
+### max-nest
 
 Avoid indent deeper than 4 (maximum block nesting, eg for loop within an if within a for loop within a for loop):
 
