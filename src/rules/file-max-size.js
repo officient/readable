@@ -6,23 +6,27 @@ module.exports = {
     // backward compatibility
     const oldConfig = (typeof options === 'number');
     const maxLines = oldConfig ? options : options['max-lines'];
-    const comments = oldConfig ? true : options['include-commants'];
+    const comments = oldConfig ? true : options['include-comments'];
     const emptyLines = oldConfig ? true : options['include-empty-lines'];
 
     const lines = new Set();
     while (tokens.type() !== types.eof) {
-      if ((tokens.type() === types.comment && !comments)
-          || (tokens.type() === types.whitespace && !emptyLines)) {
-        tokens.step();
-        continue;
-      }
       tokens.body().split(/\r?\n/).forEach((_, i) => {
+        if (tokens.type() === types.whitespace) {
+          return;
+        }
+        if ((tokens.type() === types.comments) && !comments) {
+          return;
+        }
         lines.add(tokens.current().line + i);
       });
       tokens.step(false, comments || emptyLines);
     }
-    if (lines.size > maxLines) {
-      report(`file contains more than ${maxLines} lines [${lines.size}].`, tokens.current());
+
+    tokens.step(true);
+    const lineCount = (emptyLines && comments) ? tokens.current().line : lines.size;
+    if (lineCount > maxLines) {
+      report(`file contains more than ${maxLines} lines [${lineCount}].`, tokens.current());
     }
   },
 };

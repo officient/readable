@@ -29,7 +29,7 @@ ruleTest('file-max-size', rule, {
     {
       src,
       config: 2,
-      messageIncludes: 'than 2 lines [5]',
+      messageIncludes: 'than 2 lines [4]',
     },
     {
       src: src2,
@@ -38,7 +38,7 @@ ruleTest('file-max-size', rule, {
         'include-comments': false,
         'include-empty-lines': true,
       },
-      messageIncludes: 'than 2 lines [6]',
+      messageIncludes: 'than 2 lines [7]',
     },
     {
       src: src2,
@@ -48,6 +48,15 @@ ruleTest('file-max-size', rule, {
         'include-empty-lines': false,
       },
       messageIncludes: 'than 2 lines [3]',
+    },
+    {
+      src: src2,
+      config: {
+        'max-lines': 2,
+        'include-comments': true,
+        'include-empty-lines': true,
+      },
+      messageIncludes: 'than 2 lines [9]',
     },
   ],
 });
