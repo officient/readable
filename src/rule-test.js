@@ -21,7 +21,10 @@ function ruleTest(name, rule, tests) {
     ava.cb(`${name} reports [${i + 1}]`, (t) => {
       rule.check(test.config, tokens, (message) => {
         if (test.messageIncludes) {
-          t.true(message.includes(test.messageIncludes));
+          t.true(
+            message.includes(test.messageIncludes),
+            `Expected '${test.messageIncludes}' got '${message}'`,
+          );
         }
         t.end();
       });
