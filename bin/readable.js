@@ -48,15 +48,13 @@ function printErrors(errors) {
   }
 
   paths.forEach((path) => {
-    console.error(path);
     Object.keys(errors[path]).forEach((rule) => {
       Object.keys(errors[path][rule]).forEach((message) => {
-        console.error(`  ${message}`);
         const tokens = errors[path][rule][message];
         tokens.forEach((token) => {
-          if (token !== true) {
-            console.error(`    at line ${token.line} column ${token.column}`);
-          }
+          const line = (token !== true) ? `:${token.line}:${token.column}` : '';
+          console.error(`${path}${line}`);
+          console.error(`  ${message}`);
         });
       });
     });
