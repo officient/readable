@@ -10,7 +10,12 @@ module.exports = {
         }
       });
 
-      const length = lineEnd.current().column;
+      const lineStart = token.copy();
+      while (lineStart.current().line === token.current().line) {
+        lineStart.step(true);
+      }
+
+      const length = lineEnd.current().column - lineStart.step().current().line;
       if (isTernary && (length > maxLength)) {
         report(`Line with ternaty longer than ${maxLength} [${length}]`, token.current());
       }
