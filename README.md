@@ -14,7 +14,7 @@ You can install readable using npm:
 
     $ npm install @officient/readable --save-dev
 
-You can get the help on useage:
+You can get the help on usage:
 
     $ npx readable --help
 
@@ -35,6 +35,14 @@ You can also add it to your NPM scripts:
 ```
 
      $ npm run test
+
+Also you can use our docker-image:
+
+    $ docker run --rm \
+        -v "$(pwd):/rootfs:ro" \
+        --user "$(id -u):$(id -g)" \
+        -w /rootfs \
+        officient/readable:latest
 
 ### Exit code
 

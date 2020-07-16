@@ -19,3 +19,11 @@ jobs:
         CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
       run:
         curl -s https://codecov.io/bash | bash -s -- -t $CODECOV_TOKEN
+
+  docker-build:
+    name: Build docker image
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: docker build -t image:local -f ./Dockerfile .
+      - run: docker run --rm image:local --help
