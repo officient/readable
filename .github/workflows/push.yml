@@ -7,7 +7,7 @@ jobs:
     steps:
     - uses: actions/checkout@master
     - name: Dependencies
-      run: npm i
+      run: npm ci
     - name: Eslint
       run: npm run lint
     - name: Jest
