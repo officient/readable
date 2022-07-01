@@ -33,7 +33,7 @@ function countLines(startToken, endToken, { comments, emptyLines }) {
 
   // Count lines including empty lines. Excludes comments if `include-comments` is falsy.
   const lines = new Set();
-  while (tokens.pos !== endToken.pos) {
+  while (tokens.pos <= endToken.pos && tokens.type() !== types.eof) {
     tokens.body().split(/\r?\n/).forEach((_, i) => {
       if (tokens.type() === types.whitespace) {
         return;
