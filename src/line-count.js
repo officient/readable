@@ -46,8 +46,10 @@ function countLines(startToken, endToken, { comments, emptyLines }) {
     tokens.step(false, comments || emptyLines);
   }
 
+  if (tokens.current().type === types.eof) {
+    tokens.step(true);
+  }
   // Count the total amount of lines based on the settings
-  tokens.step(true);
   // +1 to include the first line.
   let lineCount = tokens.current().line - startToken.current().line + 1;
   if (!emptyLines || !comments) {
