@@ -18,6 +18,20 @@ one();
 two();
 `;
 
+const src3 = `<?php
+/**
+ * This is
+ * a very
+ * long
+ * comment
+ */
+   doSomething();
+
+// This is a shorter comment
+
+doSomethingElse();
+`;
+
 ruleTest('file-max-size', rule, {
   valid: [
     {
@@ -38,7 +52,7 @@ ruleTest('file-max-size', rule, {
         'include-comments': false,
         'include-empty-lines': true,
       },
-      messageIncludes: 'than 2 lines [7]',
+      messageIncludes: 'than 2 lines [5]',
     },
     {
       src: src2,
@@ -58,5 +72,23 @@ ruleTest('file-max-size', rule, {
       },
       messageIncludes: 'than 2 lines [9]',
     },
+    {
+      src: src3,
+      config: {
+        'max-lines': 2,
+        'include-comments': true,
+        'include-empty-lines': false,
+      },
+      messageIncludes: 'than 2 lines [10]',
+    },
+    {
+      src: src3,
+      config: {
+        'max-lines': 2,
+        'include-comments': false,
+        'include-empty-lines': true,
+      },
+      messageIncludes: 'than 2 lines [5]',
+    }
   ],
 });
