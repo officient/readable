@@ -19,7 +19,8 @@
     "file-max-size": {
       "max-lines": 200,
       "include-comments": true,
-      "include-empty-lines": true
+      "include-empty-lines": true,
+      "include-brackets": true
     },
     "argument-override": {
       "allow-pass-by-reference": true
