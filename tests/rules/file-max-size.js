@@ -89,6 +89,6 @@ ruleTest('file-max-size', rule, {
         'include-empty-lines': true,
       },
       messageIncludes: 'than 2 lines [5]',
-    }
+    },
   ],
 });

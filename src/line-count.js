@@ -1,6 +1,6 @@
-const {types} = require('./tokenize');
+const { types } = require('./tokenize');
 
-function countLines(tokens, {comments, emptyLines}) {
+function countLines(tokens, { comments, emptyLines }) {
   // Count empty lines
   const typesPerLine = tokens.array.reduce((acc, token) => {
     const group = (acc[token.line] || []);
