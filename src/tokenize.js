@@ -97,6 +97,13 @@ class Tokens {
     return this;
   }
 
+  stepToEof() {
+    while (this.type() !== types.eof) {
+      this.step();
+    }
+    return this;
+  }
+
   /**
    * Steps to correct closing brace
    * @param  {tockensCallback} callback callback for each step

@@ -36,7 +36,15 @@ ruleTest('file-max-size', rule, {
   valid: [
     {
       src,
-      config: 5,
+      config: 4,
+    },
+    {
+      src: src2,
+      config: 9,
+    },
+    {
+      src: src3,
+      config: 12,
     },
   ],
   invalid: [
