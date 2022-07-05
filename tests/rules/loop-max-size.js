@@ -56,7 +56,7 @@ ruleTest('loop-max-size', rule, {
         'include-empty-lines': true,
         'include-brackets': true,
       },
-      messageIncludes: 'than 3 lines [8]',
+      messageIncludes: 'than 3 lines [7]',
     },
     {
       src: src2,
@@ -72,7 +72,7 @@ ruleTest('loop-max-size', rule, {
         'max-lines': 4,
         'include-brackets': false,
       },
-      messageIncludes: 'than 4 lines [10]',
+      messageIncludes: 'than 4 lines [9]',
     },
     {
       src: src2,
