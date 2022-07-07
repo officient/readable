@@ -34,7 +34,8 @@ Avoid files with more than 200 lines:
 "file-max-size": {
   "max-lines": 200,
   "include-comments": true,
-  "include-empty-lines": true
+  "include-empty-lines": true,
+  "include-brackets": true
 },
 ```
 

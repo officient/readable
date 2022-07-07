@@ -1,6 +1,6 @@
 const { types } = require('./tokenize');
 
-function countLines(startToken, endToken, { comments, emptyLines }) {
+function countLines(startToken, endToken, { comments, emptyLines, brackets }) {
   const tokens = startToken.copy();
 
   // Count empty lines
@@ -48,6 +48,9 @@ function countLines(startToken, endToken, { comments, emptyLines }) {
       if (tokens.type() === types.comment && !comments) {
         return;
       }
+      if ((tokens.type() === types.bracket && !brackets)) {
+        return;
+      }
       lines.add(tokens.current().line + i);
     });
     tokens.step(false, comments || emptyLines);
@@ -59,7 +62,7 @@ function countLines(startToken, endToken, { comments, emptyLines }) {
   // Count the total amount of lines based on the settings
   // +1 to include the first line.
   let lineCount = tokens.current().line - startToken.current().line + 1;
-  if (!emptyLines || !comments) {
+  if (!emptyLines || !comments || !brackets) {
     lineCount = lines.size;
     if (emptyLines) {
       lineCount += emptyLineCount;
