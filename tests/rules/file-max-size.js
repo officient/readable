@@ -63,13 +63,17 @@ ruleTest('file-max-size', rule, {
         'include-brackets': true,
       },
     },
+    {
+      src: src3,
+      config: {
+        'max-lines': 17,
+        'include-empty-lines': true,
+        'include-comments': true,
+        'include-brackets': true,
+      },
+    },
   ],
   invalid: [
-    {
-      src,
-      config: 2,
-      messageIncludes: 'than 2 lines [4]',
-    },
     {
       src: src2,
       config: {
