@@ -34,9 +34,9 @@ const src3 = `<?php
    doSomething();
 
 // This is a shorter comment
-
+			
 doSomethingElse();
-
+		    
 if(true)
 {
   echo "hello world";
@@ -123,6 +123,6 @@ ruleTest('file-max-size', rule, {
         'include-brackets': false,
       },
       messageIncludes: 'than 2 lines [15]',
-    },
+    }
   ],
 });
