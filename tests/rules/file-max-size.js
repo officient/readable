@@ -1,4 +1,4 @@
-// eslint-disable-file no-tabs
+/* eslint-disable no-tabs */
 const ruleTest = require('../../src/rule-test');
 const rule = require('../../src/rules/file-max-size');
 
