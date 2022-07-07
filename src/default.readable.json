@@ -17,7 +17,12 @@
     "loop-max-nest": 2,
     "max-nest": 3,
     "ternary-max-length": 50,
-    "function-max-size": 50,
+    "function-max-size": {
+      "max-lines": 50,
+      "include-comments": true,
+      "include-empty-lines": true,
+      "include-brackets": true
+    },
     "class-comment": true,
     "missing-braces": true,
     "forbidden-function-prefix": ["check"],

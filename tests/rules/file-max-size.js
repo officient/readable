@@ -1,3 +1,4 @@
+/* eslint-disable no-tabs */
 const ruleTest = require('../../src/rule-test');
 const rule = require('../../src/rules/file-max-size');
 
@@ -34,9 +35,9 @@ const src3 = `<?php
    doSomething();
 
 // This is a shorter comment
-
+		  
 doSomethingElse();
-
+		  
 if(true)
 {
   echo "hello world";
@@ -62,13 +63,17 @@ ruleTest('file-max-size', rule, {
         'include-brackets': true,
       },
     },
+    {
+      src: src3,
+      config: {
+        'max-lines': 17,
+        'include-empty-lines': true,
+        'include-comments': true,
+        'include-brackets': true,
+      },
+    },
   ],
   invalid: [
-    {
-      src,
-      config: 2,
-      messageIncludes: 'than 2 lines [4]',
-    },
     {
       src: src2,
       config: {
