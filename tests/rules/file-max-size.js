@@ -1,4 +1,4 @@
-// eslint-disable-next-line no-tabs
+// eslint-disable-file no-tabs
 const ruleTest = require('../../src/rule-test');
 const rule = require('../../src/rules/file-max-size');
 
@@ -33,11 +33,11 @@ const src3 = `<?php
  * comment
  */
    doSomething();
-			 	
-// This is a shorter comment
-   		 
-doSomethingElse();
 
+// This is a shorter comment
+		  
+doSomethingElse();
+		  
 if(true)
 {
   echo "hello world";
