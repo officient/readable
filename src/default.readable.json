@@ -8,7 +8,12 @@
     "if-assigment": true,
     "complex-if": true,
     "namespace-max-files": 15,
-    "loop-max-size": 15,
+    "loop-max-size": {
+      "max-lines": 15,
+      "include-comments": true,
+      "include-empty-lines": true,
+      "include-brackets": true
+    },
     "loop-max-nest": 2,
     "max-nest": 3,
     "ternary-max-length": 50,
